@@ -1,0 +1,4 @@
+html, body, .romero {
+    min-height: 100% !important;
+    height: 100%;
+}
