@@ -23,8 +23,14 @@ var ditTracker = (function() {
   var didScroll = false;
   var scrollEvent;
   var body = document.body;
-  var exp_start_time;;
+  var exp_start_time;
+  var persistSize = 60; // persist 
 
+  //
+  // public variables
+  //
+  core.debug = false;
+  
   //
   // private methods
   //
@@ -43,21 +49,27 @@ var ditTracker = (function() {
   }
 
   logClicks = function(event) {
-         var e = {timeStamp:totalTime(), x:event.clientX, y:event.clientY};
+         var e = {
+             timeStamp:   totalTime(), 
+             x:           event.clientX, 
+             y:           event.clientY, 
+             vizElement:  event.srcElement.outerHTML.substr(0,100)
+         };
          mouseClicks.push(e);
-         console.log("Mouse click! X="+e.x+" Y="+e.y);
+         if (core.debug) {console.log("Mouse click! X="+e.x+" Y="+e.y);}
   }
 
   logKeyBoard = function(event) {
          var e = {timeStamp:totalTime(), key:event.key};
          keyBoardUse.push(e);
-         console.log("Keyboard used!!!!!! Key="+e.key);
+         if (core.debug) {console.log("Keyboard used!!!!!! Key="+e.key)}
   }
+
   //
   // public methods
   //
   core.start = function () {
-      console.log("START RECORDING USER INTERACTION");
+      if (core.debug) {console.log("START RECORDING USER INTERACTION");}
 
       // reset arrays
       mouseClicks = [];
@@ -76,14 +88,19 @@ var ditTracker = (function() {
       scrollIntervalId = setInterval(function() {
           if(didScroll) {
               didScroll = false;
-              scrolling.push(scrollEvent)
-              console.log('You scrolled');
+              scrolling.push(scrollEvent);
+              if (core.debug) {console.log("You scrolled!");}
           }
       }, 100);
 
       pointerIntervalId = setInterval(function() {
-          mousePos.push({timeStamp:totalTime(), x:cursorX, y:cursorY});
-          console.log("mousePos push 4!" );
+          mousePos.push({timeStamp: totalTime(), 
+                         x:         cursorX, 
+                         y:         cursorY,
+                         yHeight:   window.innerHeight,
+                         xWidth:    window.innerWidth
+                         });
+          if (core.debug) {console.log("mouse position recorded!");}
 
           /*
           if (mousePos.length >= 5) {
@@ -115,7 +132,7 @@ var ditTracker = (function() {
 
   core.stop = function () {
       recording_user_actions = false;
-      console.log("STOP RECORDING USER INTERACTION");
+      if (core.debug) {console.log("STOP RECORDING USER INTERACTION");}
       window.onclick     = null; 
       window.onwheel     = null; 
       window.onkeydown   = null; 
