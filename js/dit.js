@@ -60,11 +60,10 @@ dit.persist = (function() {
   //
   // private variables
   //
-  var SCROLL_FLAG   = 'F';
+  var SCROLL_FLAG   = 'S';
   var MOUSE_POS     = 'P';
   var MOUSE_CLICK   = 'C';
   var KEYBOARD      = 'K';
-  var UNAVAILABLE   = 'U';
   
   var PERSIST_SIZE = 60; // persist every time and array reaches this size
 

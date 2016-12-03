@@ -36,12 +36,13 @@
 
   
   <div class="container">
-    <h1 class="text-center">Welcome</h1>
-    <div class="main">
+    <div class="main lead text-align" id="ditmain">
+      
+      <h1 class="text-center">Welcome</h1>     
       
       <!--welcome message row start-->
       <div class="row"> 
-          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-align">
+          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
           
             <p>Thank you in advance for your time in participating in this online experiment for my Computing Master's Thesis. I would like that you complete at least one of the tasks below, but I would be forever gratfull if you could complete both.</p>
             <p>Before starting a task please be sure that you read the general instructions below:</p>
@@ -58,16 +59,16 @@
       </div>
       <!--welcome message row end-->
 
-      <!--welcome message row start-->
+      <!-- buttons start-->
       <div class="row"> 
 
           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-            <button type="button" class="btn btn-primary btn-lg">Start Task 1</button>
-            <button type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
+            <button id="dit_task1" type="button" class="btn btn-primary btn-lg">Start Task 1</button>
+            <button id="dit_task2" type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
           </div>
   
       </div>
-      <!--welcome message row end-->
+      <!-- buttons end-->
 
     </div> <!--main end-->
   </div> <!--container end-->
@@ -76,8 +77,18 @@
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- Bootstrap - latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <!-- DIT js -->
+  <!-- D3 - latest compiled and minified JavaScript -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <!-- DIT js - core functionality logic -->
   <script src="js/dit.js"></script>
+  <!-- DIT GUI js - gui actions and mixed use of the other libraries -->
+  <script src="js/ditgui.js"></script>
+  
+  <script>
+        $(document).ready(function() {
+            $('#dit_task1').on("click", ditStartTask1);
+        });
+  </script>
 
   
 </body>
