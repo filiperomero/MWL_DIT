@@ -18,9 +18,12 @@ $paramArr["age"]          = htmlspecialchars($_POST['age']);
 $paramArr["nationality"]  = htmlspecialchars($_POST['nationality']);
 $paramArr["expertise"]    = htmlspecialchars($_POST['expertise']);
 $paramArr["education"]    = htmlspecialchars($_POST['education']);
+$paramArr["tasktype"]     = htmlspecialchars($_POST['tasktype']);
 
-$_SESSION['id'] = $taskDAO->insert( $paramArr );
+$results = $taskDAO->insert( $paramArr );
 
-print_r ($_SESSION['id']);
+$_SESSION['id'] = $results[0];
+
+print $results[0] . "/" . $results[1];
 
 ?>

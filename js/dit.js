@@ -11,7 +11,8 @@ var dit = (function() {
   //
   // public variables
   //
-  //core.debug = false;
+  core.task = 0;
+  core.interface = 0;
 
   //
   // private variables
@@ -48,14 +49,6 @@ dit.persist = (function() {
   //
   // public variables
   //
-  /*module.SCROLL_FLAG   = 'F';
-  module.MOUSE_POS     = 'P';
-  module.MOUSE_CLICK   = 'C';
-  module.KEYBOARD      = 'K';
-  module.UNAVAILABLE   = 'U';
-  
-  module.persistSize = 60; // persist every time and array reaches this size
-  */
 
   //
   // private variables
@@ -102,6 +95,7 @@ dit.persist = (function() {
         data: data, 
          success:function(data) {
             if (dit.isDebugging()) {console.log(data);}
+            dit.interface = data.split('/')[1];
          }
     });
     

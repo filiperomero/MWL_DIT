@@ -69,8 +69,8 @@ session_start();
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="dit_task1" type="button" class="btn btn-primary btn-lg">Start Task 1</button>
-                            <button id="dit_task2" type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
+                            <button id="ditbtntask1" type="button" class="btn btn-primary btn-lg">Start Task 1</button>
+                            <button id="ditbtntask2" type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
                           </div>
                   
                       </div>
@@ -390,8 +390,9 @@ session_start();
   
   <script>
         $(document).ready(function() {
-            $('#dit_task1').on("click", prepareTask1);
-            $('#ditform').submit(function(e){startTask1(e);});
+            $('#ditbtntask1').on("click", function(){prepareTask(1);});
+            $('#ditbtntask2').on("click", function(){prepareTask(2);});
+            $('#ditform').submit(function(e){startTask(e);});
         });
   </script>
 
