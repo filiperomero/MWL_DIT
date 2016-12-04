@@ -1,0 +1,9 @@
+.dit-radio {
+  position: relative;
+  /*padding-left: 20px;*/
+  display: block;
+  margin-bottom: 0;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+}

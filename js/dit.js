@@ -65,7 +65,7 @@ dit.persist = (function() {
   var MOUSE_CLICK   = 'C';
   var KEYBOARD      = 'K';
   
-  var PERSIST_SIZE = 60; // persist every time and array reaches this size
+  var PERSIST_SIZE = 5; // persist every time and array reaches this size
 
   
   //
@@ -92,7 +92,24 @@ dit.persist = (function() {
       return PERSIST_SIZE;
   }
   
-  module.exec = function(flag, dataArr) {
+  module.personalData = function(data) {
+      
+    if (dit.isDebugging()) {console.log("persist personal data to the server");}
+    
+    var posting = jQuery.ajax({
+        type: "POST",
+        url:  "php/persist_personal.php",
+        data: data, 
+         success:function(data) {
+            if (dit.isDebugging()) {console.log(data);}
+         }
+    });
+    
+    return posting;
+    
+  }
+  
+  module.activity = function(flag, dataArr) {
       
       var serviceName = (function(f) {
           switch(f) {
@@ -109,13 +126,13 @@ dit.persist = (function() {
           }
       })(flag);
       
-      if (dit.isDebugging()) {console.log("persist "+serviceName);}
+      if (dit.isDebugging()) {console.log("persist -> "+serviceName);}
       
       
       //if (serviceName == 'php/persist_mouse_pos.php'){
       if (serviceName !== 'UNAVAILABLE'){
             // persist data to the server
-            if (dit.isDebugging()) {console.log("persist data do the server");}
+            if (dit.isDebugging()) {console.log("persist activity data to the server: " + serviceName);}
             jQuery.ajax({
                 type: "POST",
                 url:  serviceName,
@@ -191,7 +208,7 @@ dit.tracker = (function() {
          if (mouseClicks.length >= dit.persist.getPersistSize()) {
                 if (dit.isDebugging()) {console.log("mouseClicks reach max size and is going to be persisted");}
                 mouseClicksPersist = mouseClicks.slice(0); // clone the array
-                dit.persist.exec(dit.persist.getMouseClickFlag(), mouseClicksPersist);
+                dit.persist.activity(dit.persist.getMouseClickFlag(), mouseClicksPersist);
                 if (dit.isDebugging()) {console.log("reset mouseClicks");}; // reset
                 mouseClicks = [];
          }
@@ -205,7 +222,7 @@ dit.tracker = (function() {
          if (keyBoardUse.length >= dit.persist.getPersistSize()) {
                 if (dit.isDebugging()) {console.log("keyBoardUse reach max size and is going to be persisted");}
                 keyBoardUsePersist = keyBoardUse.slice(0); // clone the array
-                dit.persist.exec(dit.persist.getKeyboardFlag(), keyBoardUsePersist);
+                dit.persist.activity(dit.persist.getKeyboardFlag(), keyBoardUsePersist);
                 if (dit.isDebugging()) {console.log("reset keyBoardUse");}; // reset
                 keyBoardUse = [];
          }
@@ -240,7 +257,7 @@ dit.tracker = (function() {
               if (scrolling.length >= dit.persist.getPersistSize()) {
                     if (dit.isDebugging()) {console.log("scrolling reach max size and is going to be persisted");}
                     scrollingPersist = scrolling.slice(0); // clone the array
-                    dit.persist.exec(dit.persist.getScrollFlag(), scrollingPersist);
+                    dit.persist.activity(dit.persist.getScrollFlag(), scrollingPersist);
                     if (dit.isDebugging()) {console.log("reset scrolling");}; // reset
                     scrolling = [];
               }
@@ -255,6 +272,7 @@ dit.tracker = (function() {
                          yHeight:   window.innerHeight,
                          xWidth:    window.innerWidth
                          });
+          
           if (dit.isDebugging()) {console.log("mouse position recorded!");}
 
           if (mousePos.length >= dit.persist.getPersistSize()) {
@@ -272,7 +290,7 @@ dit.tracker = (function() {
                     //console.log(JSON.stringify(mousePosPersist));
                 }
                 
-                dit.persist.exec(dit.persist.getMousePosFlag(), mousePosPersist);
+                dit.persist.activity(dit.persist.getMousePosFlag(), mousePosPersist);
 
                 // reset MousePos
                 if (dit.isDebugging()) {console.log("reset MousePos");};
@@ -294,10 +312,10 @@ dit.tracker = (function() {
       
       if (dit.isDebugging()) {console.log("persist remaining data");}
       // persist remaining data
-      dit.persist.exec(dit.persist.getScrollFlag(), scrolling);
-      dit.persist.exec(dit.persist.getMousePosFlag(), mousePos);
-      dit.persist.exec(dit.persist.getMouseClickFlag(), mouseClicks);
-      dit.persist.exec(dit.persist.getKeyboardFlag(), keyBoardUse);
+      dit.persist.activity(dit.persist.getScrollFlag(), scrolling);
+      dit.persist.activity(dit.persist.getMousePosFlag(), mousePos);
+      dit.persist.activity(dit.persist.getMouseClickFlag(), mouseClicks);
+      dit.persist.activity(dit.persist.getKeyboardFlag(), keyBoardUse);
   
   }
 

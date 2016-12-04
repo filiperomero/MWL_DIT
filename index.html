@@ -1,0 +1,400 @@
+<?php
+// Start the session
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- theme info -->
+  <meta name="description" content="Master's Thesis - Experiment">
+  <meta name="author" content="Filipe Romero">
+  <!-- site title -->
+  <title>DIT | Dublin Institute of Technology</title>
+  <!-- favicons -->
+  <link rel="shortcut icon" href="./img/logo.gif">
+  <link rel="icon" sizes="any" mask="" href="./img/logo.gif">
+  <link rel="apple-touch-icon" href="./img/logo.gif">
+  
+  <!-- Bootstrap - Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="nav-container container">
+      <a href="#" class="navbar-left"><img src="img/logo.gif" style="max-width:35px; margin-top: +7px;"></a>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">DIT - Dublin Institute of Technology</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <div class="container">
+    <div class="main lead text-align" id="ditmain">
+      
+          <div id="ditwelcome">
+                      <h1 class="text-center">Welcome</h1>     
+                      
+                      <!--welcome message row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                          
+                            <p>Thank you in advance for your time in participating in this online experiment for my Computing Master's Thesis. I would like that you complete at least one of the tasks below, but I would be forever gratfull if you could complete both.</p>
+                            <p>Before starting a task please be sure that you read the general instructions below:</p>
+                            <ul>
+                              <li>Please do not use a tablet or a smartphone. This tasks are intended to be completed using a desktop or a laptop</li>
+                              <li>Please make sure that your browser's window is maximized</li>
+                              <li>Please don't open new tabs, web sites, or apps during the experiment</li>
+                              <li>Please be sure that you won't be interrupted while completing each task</li>
+                              <li>Give your best!</li>
+                            </ul>
+                            <p class="text-right">Thank you!</p>
+                          </div>
+                          
+                      </div>
+                      <!--welcome message row end-->
+
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="dit_task1" type="button" class="btn btn-primary btn-lg">Start Task 1</button>
+                            <button id="dit_task2" type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit welcome end-->
+          
+          
+          <div id="ditsurvey" class="hidden">
+
+              <!--welcome message row start-->
+              <div class="row"> 
+                  <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                        <h2>Please tell us a litlle about yourself before starting the task!</h2>
+                        </br>
+
+                                <form data-toggle="validator" role="form" id="ditform">
+                                
+                                      <fieldset class="form-group row">
+                                          <legend><strong>Gender</strong></legend>
+                                          <div class="form-check" id="ditgender">
+                                                <label class="radio-inline form-check-label">
+                                                  <input class="form-check-input" type="radio" name="gender" id="Gender1" value="male" required> Male
+                                                </label>
+                                                <label class="radio-inline form-check-label">
+                                                  <input class="form-check-input" type="radio" name="gender" id="Gender2" value="female" required> Female
+                                                </label>
+                                                <div class="help-block with-errors"></div>
+                                          </div>
+                                      </fieldset>
+                                      
+                                      <fieldset class="form-group row">
+                                          <legend><strong>How old are you?</strong></legend>
+                                          <div class="form-check" id="ditage">
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="age" id="Age1" value="less than 18" required> &lt; 18
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="age" id="Age2" value="between 18 and 25" required>  between 18 and 25
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="age" id="Age3" value="between 26 and 35" required>  between 26 and 35
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="age" id="Age4" value="between 36 and 50" required>  between 36 and 50
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="age" id="Age5" value="bigger than 50" required>  &gt; 50
+                                                </label>
+                                                <div class="help-block with-errors"></div>
+                                          </div>
+                                      </fieldset>
+                                      
+                                      <fieldset class="form-group row">
+                                          <legend><strong>What is your Nationality?</strong></legend>
+                                                <select name="nationality" class="control-label" id="ditnationality" required>
+                                                  <option value="">-- select one --</option>
+                                                  <option value="afghan">Afghan</option>
+                                                  <option value="albanian">Albanian</option>
+                                                  <option value="algerian">Algerian</option>
+                                                  <option value="american">American</option>
+                                                  <option value="andorran">Andorran</option>
+                                                  <option value="angolan">Angolan</option>
+                                                  <option value="antiguans">Antiguans</option>
+                                                  <option value="argentinean">Argentinean</option>
+                                                  <option value="armenian">Armenian</option>
+                                                  <option value="australian">Australian</option>
+                                                  <option value="austrian">Austrian</option>
+                                                  <option value="azerbaijani">Azerbaijani</option>
+                                                  <option value="bahamian">Bahamian</option>
+                                                  <option value="bahraini">Bahraini</option>
+                                                  <option value="bangladeshi">Bangladeshi</option>
+                                                  <option value="barbadian">Barbadian</option>
+                                                  <option value="barbudans">Barbudans</option>
+                                                  <option value="batswana">Batswana</option>
+                                                  <option value="belarusian">Belarusian</option>
+                                                  <option value="belgian">Belgian</option>
+                                                  <option value="belizean">Belizean</option>
+                                                  <option value="beninese">Beninese</option>
+                                                  <option value="bhutanese">Bhutanese</option>
+                                                  <option value="bolivian">Bolivian</option>
+                                                  <option value="bosnian">Bosnian</option>
+                                                  <option value="brazilian">Brazilian</option>
+                                                  <option value="british">British</option>
+                                                  <option value="bruneian">Bruneian</option>
+                                                  <option value="bulgarian">Bulgarian</option>
+                                                  <option value="burkinabe">Burkinabe</option>
+                                                  <option value="burmese">Burmese</option>
+                                                  <option value="burundian">Burundian</option>
+                                                  <option value="cambodian">Cambodian</option>
+                                                  <option value="cameroonian">Cameroonian</option>
+                                                  <option value="canadian">Canadian</option>
+                                                  <option value="cape verdean">Cape Verdean</option>
+                                                  <option value="central african">Central African</option>
+                                                  <option value="chadian">Chadian</option>
+                                                  <option value="chilean">Chilean</option>
+                                                  <option value="chinese">Chinese</option>
+                                                  <option value="colombian">Colombian</option>
+                                                  <option value="comoran">Comoran</option>
+                                                  <option value="congolese">Congolese</option>
+                                                  <option value="costa rican">Costa Rican</option>
+                                                  <option value="croatian">Croatian</option>
+                                                  <option value="cuban">Cuban</option>
+                                                  <option value="cypriot">Cypriot</option>
+                                                  <option value="czech">Czech</option>
+                                                  <option value="danish">Danish</option>
+                                                  <option value="djibouti">Djibouti</option>
+                                                  <option value="dominican">Dominican</option>
+                                                  <option value="dutch">Dutch</option>
+                                                  <option value="east timorese">East Timorese</option>
+                                                  <option value="ecuadorean">Ecuadorean</option>
+                                                  <option value="egyptian">Egyptian</option>
+                                                  <option value="emirian">Emirian</option>
+                                                  <option value="equatorial guinean">Equatorial Guinean</option>
+                                                  <option value="eritrean">Eritrean</option>
+                                                  <option value="estonian">Estonian</option>
+                                                  <option value="ethiopian">Ethiopian</option>
+                                                  <option value="fijian">Fijian</option>
+                                                  <option value="filipino">Filipino</option>
+                                                  <option value="finnish">Finnish</option>
+                                                  <option value="french">French</option>
+                                                  <option value="gabonese">Gabonese</option>
+                                                  <option value="gambian">Gambian</option>
+                                                  <option value="georgian">Georgian</option>
+                                                  <option value="german">German</option>
+                                                  <option value="ghanaian">Ghanaian</option>
+                                                  <option value="greek">Greek</option>
+                                                  <option value="grenadian">Grenadian</option>
+                                                  <option value="guatemalan">Guatemalan</option>
+                                                  <option value="guinea-bissauan">Guinea-Bissauan</option>
+                                                  <option value="guinean">Guinean</option>
+                                                  <option value="guyanese">Guyanese</option>
+                                                  <option value="haitian">Haitian</option>
+                                                  <option value="herzegovinian">Herzegovinian</option>
+                                                  <option value="honduran">Honduran</option>
+                                                  <option value="hungarian">Hungarian</option>
+                                                  <option value="icelander">Icelander</option>
+                                                  <option value="indian">Indian</option>
+                                                  <option value="indonesian">Indonesian</option>
+                                                  <option value="iranian">Iranian</option>
+                                                  <option value="iraqi">Iraqi</option>
+                                                  <option value="irish">Irish</option>
+                                                  <option value="israeli">Israeli</option>
+                                                  <option value="italian">Italian</option>
+                                                  <option value="ivorian">Ivorian</option>
+                                                  <option value="jamaican">Jamaican</option>
+                                                  <option value="japanese">Japanese</option>
+                                                  <option value="jordanian">Jordanian</option>
+                                                  <option value="kazakhstani">Kazakhstani</option>
+                                                  <option value="kenyan">Kenyan</option>
+                                                  <option value="kittian and nevisian">Kittian and Nevisian</option>
+                                                  <option value="kuwaiti">Kuwaiti</option>
+                                                  <option value="kyrgyz">Kyrgyz</option>
+                                                  <option value="laotian">Laotian</option>
+                                                  <option value="latvian">Latvian</option>
+                                                  <option value="lebanese">Lebanese</option>
+                                                  <option value="liberian">Liberian</option>
+                                                  <option value="libyan">Libyan</option>
+                                                  <option value="liechtensteiner">Liechtensteiner</option>
+                                                  <option value="lithuanian">Lithuanian</option>
+                                                  <option value="luxembourger">Luxembourger</option>
+                                                  <option value="macedonian">Macedonian</option>
+                                                  <option value="malagasy">Malagasy</option>
+                                                  <option value="malawian">Malawian</option>
+                                                  <option value="malaysian">Malaysian</option>
+                                                  <option value="maldivan">Maldivan</option>
+                                                  <option value="malian">Malian</option>
+                                                  <option value="maltese">Maltese</option>
+                                                  <option value="marshallese">Marshallese</option>
+                                                  <option value="mauritanian">Mauritanian</option>
+                                                  <option value="mauritian">Mauritian</option>
+                                                  <option value="mexican">Mexican</option>
+                                                  <option value="micronesian">Micronesian</option>
+                                                  <option value="moldovan">Moldovan</option>
+                                                  <option value="monacan">Monacan</option>
+                                                  <option value="mongolian">Mongolian</option>
+                                                  <option value="moroccan">Moroccan</option>
+                                                  <option value="mosotho">Mosotho</option>
+                                                  <option value="motswana">Motswana</option>
+                                                  <option value="mozambican">Mozambican</option>
+                                                  <option value="namibian">Namibian</option>
+                                                  <option value="nauruan">Nauruan</option>
+                                                  <option value="nepalese">Nepalese</option>
+                                                  <option value="new zealander">New Zealander</option>
+                                                  <option value="ni-vanuatu">Ni-Vanuatu</option>
+                                                  <option value="nicaraguan">Nicaraguan</option>
+                                                  <option value="nigerien">Nigerien</option>
+                                                  <option value="north korean">North Korean</option>
+                                                  <option value="northern irish">Northern Irish</option>
+                                                  <option value="norwegian">Norwegian</option>
+                                                  <option value="omani">Omani</option>
+                                                  <option value="pakistani">Pakistani</option>
+                                                  <option value="palauan">Palauan</option>
+                                                  <option value="panamanian">Panamanian</option>
+                                                  <option value="papua new guinean">Papua New Guinean</option>
+                                                  <option value="paraguayan">Paraguayan</option>
+                                                  <option value="peruvian">Peruvian</option>
+                                                  <option value="polish">Polish</option>
+                                                  <option value="portuguese">Portuguese</option>
+                                                  <option value="qatari">Qatari</option>
+                                                  <option value="romanian">Romanian</option>
+                                                  <option value="russian">Russian</option>
+                                                  <option value="rwandan">Rwandan</option>
+                                                  <option value="saint lucian">Saint Lucian</option>
+                                                  <option value="salvadoran">Salvadoran</option>
+                                                  <option value="samoan">Samoan</option>
+                                                  <option value="san marinese">San Marinese</option>
+                                                  <option value="sao tomean">Sao Tomean</option>
+                                                  <option value="saudi">Saudi</option>
+                                                  <option value="scottish">Scottish</option>
+                                                  <option value="senegalese">Senegalese</option>
+                                                  <option value="serbian">Serbian</option>
+                                                  <option value="seychellois">Seychellois</option>
+                                                  <option value="sierra leonean">Sierra Leonean</option>
+                                                  <option value="singaporean">Singaporean</option>
+                                                  <option value="slovakian">Slovakian</option>
+                                                  <option value="slovenian">Slovenian</option>
+                                                  <option value="solomon islander">Solomon Islander</option>
+                                                  <option value="somali">Somali</option>
+                                                  <option value="south african">South African</option>
+                                                  <option value="south korean">South Korean</option>
+                                                  <option value="spanish">Spanish</option>
+                                                  <option value="sri lankan">Sri Lankan</option>
+                                                  <option value="sudanese">Sudanese</option>
+                                                  <option value="surinamer">Surinamer</option>
+                                                  <option value="swazi">Swazi</option>
+                                                  <option value="swedish">Swedish</option>
+                                                  <option value="swiss">Swiss</option>
+                                                  <option value="syrian">Syrian</option>
+                                                  <option value="taiwanese">Taiwanese</option>
+                                                  <option value="tajik">Tajik</option>
+                                                  <option value="tanzanian">Tanzanian</option>
+                                                  <option value="thai">Thai</option>
+                                                  <option value="togolese">Togolese</option>
+                                                  <option value="tongan">Tongan</option>
+                                                  <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+                                                  <option value="tunisian">Tunisian</option>
+                                                  <option value="turkish">Turkish</option>
+                                                  <option value="tuvaluan">Tuvaluan</option>
+                                                  <option value="ugandan">Ugandan</option>
+                                                  <option value="ukrainian">Ukrainian</option>
+                                                  <option value="uruguayan">Uruguayan</option>
+                                                  <option value="uzbekistani">Uzbekistani</option>
+                                                  <option value="venezuelan">Venezuelan</option>
+                                                  <option value="vietnamese">Vietnamese</option>
+                                                  <option value="welsh">Welsh</option>
+                                                  <option value="yemenite">Yemenite</option>
+                                                  <option value="zambian">Zambian</option>
+                                                  <option value="zimbabwean">Zimbabwean</option>
+                                                </select>
+                                                <div class="help-block with-errors"></div>
+                                     </fieldset>
+                                      
+                                      <fieldset class="form-group row">
+                                          <legend><strong>How would you classify yourself as a web user?</strong></legend>
+                                          <div class="form-check" id="ditexpertise">
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="expertise" value="Amateur" required> Amateur User
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="expertise" value="Average" required> Average User
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="expertise" value="Expert" required> Expert User
+                                                </label>
+                                                <div class="help-block with-errors"></div>
+                                          </div>
+                                      </fieldset>
+
+                                      <fieldset class="form-group row">
+                                          <legend><strong>What is your education level?</strong></legend>
+                                          <div class="form-check" id="diteducation">
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="education" value="Primary" required> Primary education
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="education" value="Secundary" required> Secundary education
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="education" value="Bachelor" required> Bachelor or equivalent
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="education" value="Master" required> Master or equivalent
+                                                </label>
+                                                <label class="form-check-label dit-radio control-label">
+                                                  <input class="form-check-input" type="radio" name="education" value="Doctural" required> Doctural or equivalent
+                                                </label>
+                                                <div class="help-block with-errors"></div>
+                                          </div>
+                                      </fieldset>
+                                      
+                                      <div class="form-group">
+                                         <button type="submit" class="btn btn-primary btn-lg pull-right" id="dit_start_task">Next</button>
+                                      </div>
+                                </form>
+                  </div>
+                  
+              </div>
+              <!--welcome message row end-->
+
+      </div> <!-- dit survey end-->
+
+    </div> <!--main end-->
+  </div> <!--container end-->
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Bootstrap - latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Bootstrap - Validator Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+  <!-- D3 - latest compiled and minified JavaScript -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <!-- DIT js - core functionality logic -->
+  <script src="js/dit.js"></script>
+  <!-- DIT GUI js - gui actions and mixed use of the other libraries -->
+  <script src="js/ditgui.js"></script>
+  
+  <script>
+        $(document).ready(function() {
+            $('#dit_task1').on("click", prepareTask1);
+            $('#ditform').submit(function(e){startTask1(e);});
+        });
+  </script>
+
+  
+</body>
+</html>

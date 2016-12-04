@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "conf/config.inc.php";
 
 require_once ROOT_DIR. "/DB/pdoDbManager.php";
