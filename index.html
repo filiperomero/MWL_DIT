@@ -41,14 +41,14 @@ session_start();
 
   
   <div class="container">
-    <div class="main lead text-align" id="ditmain">
+    <div class="main lead text-justify" id="ditmain">
       
           <div id="ditwelcome">
                       <h1 class="text-center">Welcome</h1>     
                       
                       <!--welcome message row start-->
                       <div class="row"> 
-                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 text-align">
                           
                             <p>Thank you in advance for your time in participating in this online experiment for my Computing Master's Thesis. I would like that you complete at least one of the tasks below, but I would be forever gratfull if you could complete both.</p>
                             <p>Before starting a task please be sure that you read the general instructions below:</p>
@@ -80,13 +80,13 @@ session_start();
           
           <div id="ditsurvey" class="hidden">
 
-              <!--welcome message row start-->
+              <!--survey row start-->
               <div class="row"> 
                   <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
                         <h2>Please tell us a litlle about yourself before starting the task!</h2>
                         </br>
 
-                                <form data-toggle="validator" role="form" id="ditform">
+                                <form data-toggle="validator" role="form" id="ditformprequest">
                                 
                                       <fieldset class="form-group row">
                                           <legend><strong>Gender</strong></legend>
@@ -362,18 +362,154 @@ session_start();
                                       </fieldset>
                                       
                                       <div class="form-group">
-                                         <button type="submit" class="btn btn-primary btn-lg pull-right" id="dit_start_task">Next</button>
+                                         <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnsrv">Next</button>
                                       </div>
                                 </form>
                   </div>
                   
               </div>
-              <!--welcome message row end-->
+              <!-- survey row end-->
 
-      </div> <!-- dit survey end-->
+          </div> <!-- dit survey end-->
 
+      
+          <div id="ditinst1" class="hidden">
+                      <h2 class="text-center">Instructions - Task 1</h2>     
+                      
+                      <!--instructions 1 row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                          
+                            <p>sdsklçsdc ld ksd k skdçds çdçdçs ççsddd h.</p>
+                            <p>sdçs  ddd  ttt kkkk kkkk kk </p>
+                          </div>
+                          
+                      </div>
+                      <!--instructions 1 row end-->
+
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnstarttsk1" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit ditinst1 end-->
+          
+          <div id="ditinst2" class="hidden">
+                      <h2 class="text-center">Instructions - Task 2</h2>     
+                      
+                      <!--instructions 2 row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                          
+                            <p>sdsklçsdc ld ksd k skdçds çdçdçs ççsddd h.</p>
+                            <p>sdçs  ddd  ttt kkkk kkkk kk </p>
+                          </div>
+                          
+                      </div>
+                      <!--instructions 1 row end-->
+
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnstarttsk2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit ditinst2 end-->
+      
+          <div id="dittask" class="hidden">
+                      <h2 class="text-center">Execute Task</h2>    
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnendtask" type="button" class="btn btn-primary  pull-right">Finish Task</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit dittask end-->
+          
+          <div id="dittask1survey" class="hidden">
+                      <h2 class="text-center">Task 1 Survey</h2>   
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnsrvtask1" type="button" class="btn btn-primary  pull-right">Next</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dittask1survey end-->
+          
+          <div id="dittask2survey" class="hidden">
+                      <h2 class="text-center">Task 2 Survey</h2>   
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnsrvtask2" type="button" class="btn btn-primary  pull-right">Next</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dittask2survey end-->
+          
+          <div id="ditselfmwl" class="hidden">
+                      <h2 class="text-center">Self MWL Assessment</h2>   
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnselfmwl" type="button" class="btn btn-primary  pull-right">Next</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- ditselfmwl end-->
+      
+      
+          <div id="ditthanksbye" class="hidden">
+                      <h1 class="text-center">Thank you!</h1>     
+                      
+                    <!--bye message row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 text-align">
+                            <p>Thank you very much for completing this task!</p>
+                            <p>I really appreciate your time and help! If you want to be informed of the outcome of my thesis research, please enter your e-mail before pressing the Home button</p>
+                          </div>
+                          
+                      </div>
+                      <!--bye message row end-->
+
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 text-align">
+                              <form id="ditformend">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email">
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                       <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnend">Home</button>
+                                    </div>
+                              </form>
+                          </div>
+                      </div>
+          </div> <!-- ditthanksbye end-->
+          
+      
     </div> <!--main end-->
   </div> <!--container end-->
+  
+  
   
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -390,9 +526,16 @@ session_start();
   
   <script>
         $(document).ready(function() {
-            $('#ditbtntask1').on("click", function(){prepareTask(1);});
-            $('#ditbtntask2').on("click", function(){prepareTask(2);});
-            $('#ditform').submit(function(e){startTask(e);});
+            $('#ditbtntask1').on("click", function(){ditPrepareTask(1);});
+            $('#ditbtntask2').on("click", function(){ditPrepareTask(2);});
+            $('#ditbtnstarttsk1').on("click", ditStartTask);
+            $('#ditbtnstarttsk2').on("click", ditStartTask);
+            $('#ditbtnendtask').on("click", ditEndTask);
+            $('#ditbtnsrvtask1').on("click", ditStartSelfMWL);
+            $('#ditbtnsrvtask2').on("click", ditStartSelfMWL);
+            $('#ditbtnselfmwl').on("click", ditBye);
+            $('#ditformprequest').submit(function(e){ditInitTask(e);});
+            $('#ditformend').submit(function(e){ditFinish(e);});
         });
   </script>
 

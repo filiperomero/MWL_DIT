@@ -58,7 +58,7 @@ dit.persist = (function() {
   var MOUSE_CLICK   = 'C';
   var KEYBOARD      = 'K';
   
-  var PERSIST_SIZE = 5; // persist every time and array reaches this size
+  var PERSIST_SIZE = 60; // persist every time and array reaches this size
 
   
   //
@@ -96,6 +96,59 @@ dit.persist = (function() {
          success:function(data) {
             if (dit.isDebugging()) {console.log(data);}
             dit.interface = data.split('/')[1];
+         }
+    });
+    
+    return posting;
+    
+  }
+  
+  module.email = function(dataArr) {
+      
+    if (dit.isDebugging()) {console.log("persist email to the server");}
+    if (dit.isDebugging()) {console.log(dataArr);}
+    
+    var posting = jQuery.ajax({
+        type: "POST",
+        url:  "php/persist_email.php",
+        data: dataArr, 
+         success:function(data) {
+            if (dit.isDebugging()) {console.log("email service success");}
+            if (dit.isDebugging()) {console.log(data);}
+         }
+    });
+    
+    return posting;
+    
+  }
+  
+  module.startDate = function(data) {
+      
+    if (dit.isDebugging()) {console.log("persist startDate to the server");}
+    
+    var posting = jQuery.ajax({
+        type: "POST",
+        url:  "php/persist_start_date.php",
+        data: data, 
+         success:function(data) {
+            if (dit.isDebugging()) {console.log(data);}
+         }
+    });
+    
+    return posting;
+    
+  }
+  
+  module.endDate = function(data) {
+      
+    if (dit.isDebugging()) {console.log("persist endDate to the server");}
+    
+    var posting = jQuery.ajax({
+        type: "POST",
+        url:  "php/persist_end_date.php",
+        data: data, 
+         success:function(data) {
+            if (dit.isDebugging()) {console.log(data);}
          }
     });
     

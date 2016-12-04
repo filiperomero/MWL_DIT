@@ -43,5 +43,47 @@ class taskDAO {
         //return ($this->dbManager->getLastInsertedID ());
     }
     
+    public function setStartDate($id) {
+       
+        // update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task ";
+        $sql .= "SET start_time = CURRENT_TIMESTAMP ";
+        $sql .= " WHERE id = ? ";
+        
+        $stmt = $this->dbManager->prepareQuery ( $sql );
+        $this->dbManager->bindValue ( $stmt, 1, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->executeQuery ( $stmt );
+
+        return "done!!!";
+    }
+    
+    public function updateEmail($parametersArray, $id) {
+        // Update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task  ";
+        $sql .= " SET email = ? ";
+        $sql .= " WHERE id = ? ";
+        
+        $stmt = $this->dbManager->prepareQuery ( $sql );
+        $this->dbManager->bindValue ( $stmt, 1, $parametersArray ["email"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 2, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->executeQuery ( $stmt );
+
+        return "done!!!";
+    }
+    
+    public function setEndDate($id) {
+       
+        // update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task ";
+        $sql .= "SET end_time = CURRENT_TIMESTAMP ";
+        $sql .= " WHERE id = ? ";
+        
+        $stmt = $this->dbManager->prepareQuery ( $sql );
+        $this->dbManager->bindValue ( $stmt, 1, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->executeQuery ( $stmt );
+
+        return "done!!!";
+    }
+    
 }
 ?>
