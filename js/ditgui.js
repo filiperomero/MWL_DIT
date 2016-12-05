@@ -157,7 +157,7 @@ function ditFinish(e) {
         */        
     }
     
-    window.location.replace("http://filipe.lucalongo.eu/new/");
+    window.location.replace("http://filipe.lucalongo.eu/");
 }
 
 
