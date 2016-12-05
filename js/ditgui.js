@@ -8,7 +8,7 @@
 var ditDivDids = ["#ditwelcome", "#ditsurvey", "#ditinst1", "#ditinst2", "#dittask", 
                   "#dittask1survey", "#dittask2survey", "#ditselfmwl", "#ditthanksbye"];
 
-function divShowDiv(ditDiv) {
+function ditShowDiv(ditDiv) {
     var hide = true;
     
     for (i = 0; i < ditDivDids.length; i++) {
@@ -27,9 +27,9 @@ function ditEmptyContent() {
 function ditShowInstructions() {
     console.log("ditShowInstructions");
     if (dit.task == 1) {
-        divShowDiv("#ditinst1");
+        ditShowDiv("#ditinst1");
     } else if (dit.task == 2) {
-        divShowDiv("#ditinst2");
+        ditShowDiv("#ditinst2");
     }
 }
 
@@ -45,7 +45,7 @@ function ditStartTask() {
         // start collecting user activity    
         dit.tracker.start();
     
-        divShowDiv("#dittask");
+        ditShowDiv("#dittask");
         
         // to change!
         $("#dittask").append("<p>launch interface " + dit.interface + " for task "+dit.task +"</p>");
@@ -67,9 +67,9 @@ function ditEndTask() {
         console.log(data);
     
         if (dit.task == 1) {
-            divShowDiv("#dittask1survey");
+            ditShowDiv("#dittask1survey");
         } else if (dit.task == 2) {
-            divShowDiv("#dittask2survey");
+            ditShowDiv("#dittask2survey");
         }
         
     });
@@ -88,7 +88,7 @@ function ditInitTask(e) {
     var formData = $('#ditformprequest').serializeArray();
 
     // check if all data was filled
-    if (formData && formData.length === 5 && formData[2].value !== "") {
+    if (formData.length === 5 && formData[2].value !== "") {
         // all data was filled, send to server
         var data = $("#ditformprequest").serialize();
         data += "&tasktype=" + dit.task;
@@ -109,17 +109,35 @@ function ditInitTask(e) {
 function ditPrepareTask(task) {
     console.log("ditPrepareTask");
     dit.task = task;
-    divShowDiv("#ditsurvey");
+    ditShowDiv("#ditsurvey");
 }
 
 function ditStartSelfMWL() {
     console.log("ditStartSelfMWL");
-    divShowDiv("#ditselfmwl");
+    ditShowDiv("#ditselfmwl");
 }
 
-function ditBye() {
+function ditBye(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
     console.log("ditBye");
-    divShowDiv("#ditthanksbye");
+    
+    var formData = $('#ditformselfmwl').serializeArray();
+    
+    // check if all data was filled
+    if (formData.length === 6) {
+        // all data was filled, send to server
+        var data = $("#ditformselfmwl").serialize();
+
+        var postResponse = dit.persist.selfMWL(data);
+        postResponse.done(function(data) {
+            console.log("postResponse.done dit.persist.selfMWL");
+            console.log(data);
+            ditShowDiv("#ditthanksbye");
+            
+        });        
+    } else {
+       console.log("not filled");
+    }
 }
 
 function ditFinish(e) {
@@ -135,8 +153,6 @@ function ditFinish(e) {
         postResponse.done(function(data) {
             console.log(" dit.persist.email postResponse.done");
             console.log(data);
-            ditShowInstructions();
-            
         }); 
         */        
     }

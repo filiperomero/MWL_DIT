@@ -57,6 +57,20 @@ class taskDAO {
         return "done!!!";
     }
     
+    public function setEndDate($id) {
+       
+        // update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task ";
+        $sql .= "SET end_time = CURRENT_TIMESTAMP ";
+        $sql .= " WHERE id = ? ";
+        
+        $stmt = $this->dbManager->prepareQuery ( $sql );
+        $this->dbManager->bindValue ( $stmt, 1, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->executeQuery ( $stmt );
+
+        return "done!!!";
+    }
+    
     public function updateEmail($parametersArray, $id) {
         // Update assumes that all the required parameters are defined and set
         $sql = "UPDATE task  ";
@@ -71,15 +85,25 @@ class taskDAO {
         return "done!!!";
     }
     
-    public function setEndDate($id) {
-       
-        // update assumes that all the required parameters are defined and set
-        $sql = "UPDATE task ";
-        $sql .= "SET end_time = CURRENT_TIMESTAMP ";
-        $sql .= " WHERE id = ? ";
+    public function updateMWL($parametersArray, $id) {
+        // Update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task  ";
+        $sql .= " SET task.mwl_mental = ? ";
+        $sql .= " , task.mwl_physical = ? ";
+        $sql .= " , task.mwl_temporal = ? ";
+        $sql .= " , task.mwl_performance = ? ";
+        $sql .= " , task.mwl_effort = ? ";
+        $sql .= " , task.mwl_frustration = ? ";
+        $sql .= " WHERE task.id = ? ";
         
         $stmt = $this->dbManager->prepareQuery ( $sql );
-        $this->dbManager->bindValue ( $stmt, 1, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->bindValue ( $stmt, 1, $parametersArray ["mwl_mental"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 2, $parametersArray ["mwl_physical"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 3, $parametersArray ["mwl_temporal"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 4, $parametersArray ["mwl_performance"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 5, $parametersArray ["mwl_effort"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 6, $parametersArray ["mwl_frustration"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 7, $id, $this->dbManager->INT_TYPE );
         $this->dbManager->executeQuery ( $stmt );
 
         return "done!!!";

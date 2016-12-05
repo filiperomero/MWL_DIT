@@ -103,6 +103,25 @@ dit.persist = (function() {
     
   }
   
+  module.selfMWL = function(dataArr) {
+      
+    if (dit.isDebugging()) {console.log("persist self assessment MWL to the server");}
+    if (dit.isDebugging()) {console.log(dataArr);}
+    
+    var posting = jQuery.ajax({
+        type: "POST",
+        url:  "php/persist_self_mwl.php",
+        data: dataArr, 
+         success:function(data) {
+            if (dit.isDebugging()) {console.log("self_mwl service success");}
+            if (dit.isDebugging()) {console.log(data);}
+         }
+    });
+    
+    return posting;
+    
+  }
+  
   module.email = function(dataArr) {
       
     if (dit.isDebugging()) {console.log("persist email to the server");}

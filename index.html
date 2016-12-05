@@ -463,16 +463,109 @@ session_start();
           </div> <!-- dittask2survey end-->
           
           <div id="ditselfmwl" class="hidden">
-                      <h2 class="text-center">Self MWL Assessment</h2>   
-                      <!-- buttons start-->
+                      
+                      <!--bye message row start-->
                       <div class="row"> 
-
-                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnselfmwl" type="button" class="btn btn-primary  pull-right">Next</button>
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 text-align">
+                            <p>Thank you very much for completing this task! Before you leave I would like that you sel-asseess yourself regarding the following dimensions:</p>
                           </div>
-                  
                       </div>
-                      <!-- buttons end-->
+                      </br>
+                      <!--bye message row end-->
+                      
+                      <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                            <form data-toggle="validator" role="form" id="ditformselfmwl">
+                            
+                                <fieldset class="form-group row">
+                                        <legend><strong>1. Mental Demand</strong> - How much mental and perceptual activity was required (e.g., thinking, deciding, calculating, remembering, looking, searching, etc.)? Was the task easy or demanding, simple or complex, exacting or forgiving?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-mental" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <fieldset class="form-group row">
+                                        <legend><strong>2. Physical Demand</strong> - How much physical activity was required (e.g., pushing, pulling, turning, controlling, activating, etc.)? Was the task easy or demanding, slow or brisk, slack or strenuous, restful or laborious?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-physical" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <fieldset class="form-group row">
+                                        <legend><strong>3. Temporal Demand </strong> - How much time pressure did you feel due to the rate or pace at which the tasks or task elements occurred? Was the pace slow and leisurely or rapid and frantic?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <fieldset class="form-group row">
+                                        <legend><strong>4. Performance </strong> - How successful do you think you were in accomplishing the goals of the task? How satisfied were you with your performance in accomplishing these goals?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-performance" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <fieldset class="form-group row">
+                                        <legend><strong>5. Effort </strong> - How hard did you have to work (mentally and physically) to accomplish your level of performance?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-effort" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <fieldset class="form-group row">
+                                        <legend><strong>6. Frustration </strong> - How insecure, discouraged, irritated, stressed and annoyed versus secure, gratified, content, relaxed and complacent did you feel during the task?</legend>
+                                        <div class="form-check">
+                                            <div class="help-block with-errors"></div>
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="very_low" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="low" required><label>Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="neutral" required><label>Neutral</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="high" required><label>High</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="very_high" required><label>Very High</label></li>
+                                            </ul>
+                                        </div>
+                                </fieldset>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnselfmwl">Next</button>
+                                </div>
+                            </form>
+                      </div> 
+                      
           </div> <!-- ditselfmwl end-->
       
       
@@ -533,7 +626,8 @@ session_start();
             $('#ditbtnendtask').on("click", ditEndTask);
             $('#ditbtnsrvtask1').on("click", ditStartSelfMWL);
             $('#ditbtnsrvtask2').on("click", ditStartSelfMWL);
-            $('#ditbtnselfmwl').on("click", ditBye);
+            //$('#ditbtnselfmwl').on("click", ditBye);
+            $('#ditformselfmwl').submit(function(e){ditBye(e);});
             $('#ditformprequest').submit(function(e){ditInitTask(e);});
             $('#ditformend').submit(function(e){ditFinish(e);});
         });
