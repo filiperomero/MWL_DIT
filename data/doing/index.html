@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.country.PRX { fill: #ddc; }
+.country.SCT { fill: #ddc; }
+.country.WLS { fill: #cdd; }
+.country.NIR { fill: #cdc; }
+.country.ENG { fill: #dcd; }
+.country.IRL { display: none; }
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
+
+/* JavaScript goes here. */
+var width = 960,
+    height = 500;
+
+var projection = d3.geo.mercator()
+    .scale(200)
+    .translate([width / 2, height / 2])
+    .center([20, 66]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("europe_ids.json", function(error, europe) {
+  if (error) return console.error(error);
+
+  var countries = topojson.feature(europe, europe.objects.subunits_europe).features;
+
+  svg.selectAll(".country")
+     .data(countries)
+     .enter().append("path")
+     .attr("class", function(d) {return "country " + d.properties.SU_A3;})
+     .attr("d", path)
+	 .on("mouseover", function(d,i) {
+        d3.select(this).style({'stroke-opacity':1,'stroke':'#F00'});
+        d3.select(this).classed("hidden", false);
+		d3.select(this).text(d.properties.SU_A3);
+     })
+	 .on("mouseout", function(d) {
+        this.style.stroke = "none";
+        d3.select(this).classed("hidden", true);
+     });
+});
+
+</script>
