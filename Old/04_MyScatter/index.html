@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+    
+    <style>
+      circle.dimple-series-1 {
+        fill: red;
+      }
+    </style>
+
+    <script type="text/javascript">
+    function draw(europe) {
+
+            function dimpleDoIt(country) {
+
+                      // filter by year
+                      var filtered = europe.filter(function(d) {
+                          return d['Country Code'] === country;
+                      });
+
+                      var margin = 75,
+                          width = 1600 - margin,
+                          height = 600 - margin;
+
+                      var svg = d3.select("body")
+                        .append("svg")
+                          .attr("width", width + margin)
+                          .attr("height", height + margin)
+                        .append('g')
+                            .attr('class','chart');
+                      
+                      console.table(filtered);
+                      
+                      var myChart = new dimple.chart(svg, filtered);
+                      var x = myChart.addTimeAxis("x", "Time"); 
+                      myChart.addMeasureAxis("y", "Population, total");
+                      x.dateParseFormat = "%Y";
+                      x.tickFormat = "%Y";
+                      x.timeInterval = 1;
+                      myChart.addSeries(null, dimple.plot.line);
+                      //myChart.addSeries(null, dimple.plot.scatter);
+                      myChart.addSeries(["Time","GNI per capita, Atlas method (current US$)"], dimple.plot.scatter);
+
+
+                      myChart.draw();
+                      
+              }
+              console.table(europe);
+              dimpleDoIt("ALB");
+           
+    };
+
+    </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the TSV file
+    and pass the contents of it to the draw function
+    */
+  d3.tsv("newnewnewtabbed.tsv", draw);
+  </script>
+</body>
+</html>
