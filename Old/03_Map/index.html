@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+<style>
+
+#tooltip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 2px 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  background-color: #bbb;
+}
+
+#tooltip.hidden {
+  display: none;
+}
+
+#tooltip p {
+  margin: 0 0 0 0;
+  padding: 2px 2px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div id="tooltip" class="hidden">
+      <p id="ditCountryname"></p>
+      <p id="ditYear"></p>
+      <p id="ditPopulation"></p>
+    </div>
+    
+    <div class="container">
+      <div class="main lead text-justify" id="ditTask1Int2">
+
+         <form class="form-inline">
+             <fieldset class="form-group row hidden" id="ditTask1Int2Field">
+                 <label>Select Year:</label>
+             </fieldset>
+             <fieldset><h2 id="ditTask1Int2Title"></h2></fieldset>
+         </form>
+
+      </div>
+    </div>
+
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript"> 
+    
+      function draw(europe) {
+
+        //add title
+        d3.select("body")
+          .append("h2")
+          .text("Total Population")
+          .attr("id","ditMapTitle");
+          
+        var tooltip = d3.select("#tooltip").classed("hidden", true),
+            ditCountryname = d3.select("#ditCountryname"),
+            ditYear = d3.select("#ditYear"),
+            ditPopulation = d3.select("#ditPopulation"),
+            format = d3.format(" 2.2f");
+      
+        var margin = 75,
+            width = 972 - margin,
+            height = 615 - margin;
+        
+        var years = [];
+
+        for(var i = 1967; i < 2016; i ++) {
+            years.push(i);
+        }
+
+        //create svg for the map
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width + margin)
+            .attr("height", height + margin);
+            
+        //create rectangle
+        svg.append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("fill", "DeepSkyBlue");
+            
+        svg.append('g')
+           .attr('class', 'map');
+            
+        svg.on("mousemove", function() {
+            // update tooltip position
+            tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            return true;
+          });
+
+        var projection = d3.geo.azimuthalEqualArea().scale(950).translate([262, 1187]).clipAngle(180 - 1e-3).precision(1);
+        var path = d3.geo.path().projection(projection);
+        
+        var countries = topojson.feature(europe, europe.objects.subunits_europe).features;
+        
+        var map = svg.selectAll('path')
+                     .data(countries)
+                     .enter()
+                     .append('path')
+                     .attr('d', path)
+                     .attr("class", function(d) {return "ditCountry";})
+                     .style('fill', 'DarkSalmon')
+                     .style('stroke', 'black')
+                     .style('stroke-width', 0.5);
+
+      function plot_points(data) {
+
+            var population_total_desc = "Population ages 0-14 (% of total)";
+            var country_code_desc = "Country Code";
+            
+            //build an array all centroids for each country
+            var country_centers = {};
+            for (var i = 0; i < countries.length; i++) {
+                country_centers[countries[i].properties.SU_A3] = path.centroid(countries[i]);
+            }
+            
+            // remove countries from data that there are not in countries
+            data = data.filter(function(d) {
+                 return country_centers.hasOwnProperty(d[country_code_desc]);
+            });
+            
+            // add stats for each country
+            countries.forEach(function(d) {
+                data.some(function(n) {
+                    if(d.properties.SU_A3 == n[country_code_desc]) return d.stats = n;
+                });
+            });
+
+            //remove countries with no stats (countries that are not in stats)
+            countries = countries.filter(function(d) {
+                return d.hasOwnProperty("stats");
+            });
+           
+            var population_max = d3.max(data, function(d) {
+                return +d[population_total_desc];
+            });
+            
+            g_population_max = population_max;
+            
+            var radius = d3.scale.sqrt()
+                           .domain([0, population_max])
+                           .range([0, 15]);
+
+            function key_func(d) {
+                return d['Time'];
+            }
+               
+          function update(year) {
+              
+              // filter data by year
+              var filtered = data.filter(function(d) {
+                  return d['Time'] === year;
+              });
+              
+              d3.select("#ditMapTitle").text("Population " + year);
+              
+              var circles = svg//.select('g[class="bubble"]')
+                               .selectAll('circle')
+                               .data(filtered/*, key_func*/);
+
+              
+              circles.exit().remove();
+              
+              svg.append('g')
+                 .attr("class", "bubble")
+                 .selectAll("circle")
+              //circles
+                 /*.data(countries.sort(function(a, b) { 
+                    gdebug = a;
+                    return b.stats['Population, total'] - a.stats['Population, total'];
+                 }), key_func)*/
+                 .data(filtered)
+                 .enter()
+                 .append("circle")
+                 //.transition()
+                 //.duration(500)
+                 .attr("transform", function(d) {return "translate(" + country_centers[d[country_code_desc]] + ")";})
+                 .attr('r', function(d) {return radius(+d[population_total_desc]);})
+                 /*;
+              
+              circles*/
+                 .on("mouseover", function(d,i) {
+                      d3.select(this).style({'stroke-opacity':1,'stroke':'yellow'});
+                      tooltip.classed("hidden", false);
+                      ditCountryname.text("Country: " + d["Country Code"]);
+                      ditYear.text("Year: " + d['Time']);
+                      ditPopulation.text(population_total_desc + " Population: " + d[population_total_desc]);
+                 })
+                 .on("mouseout", function(d) {
+                    d3.select(this).style({'stroke':'none'});
+                    tooltip.classed("hidden", true);
+                 })
+                 ;
+          }
+          
+          var year_idx = 0;
+
+          var year_interval = setInterval(function() {
+            
+            update(years[year_idx].toString());
+
+            year_idx++;
+
+            if(year_idx >= years.length) {
+                clearInterval(year_interval);
+                
+                d3.selectAll("#ditTask1Int2Field").classed("hidden", false);
+                
+                var options = d3.select("#ditTask1Int2Field")
+                    .append("select")
+                    .attr("id", "ditOptions")
+                    .attr("class", "form-control")
+                    .selectAll("option")
+                    .data(years)
+                    .enter()
+                    .append("option")
+                    .text(function(d) {return d;})
+                    .attr("value", function(d) {return d;})
+                  
+                d3.select('#ditOptions')
+                    .on("change", function(d) {
+                        key = this[this.selectedIndex].value;
+                        update(key);
+                });
+            }
+          }, 1000);
+
+      }
+      
+      
+      d3.tsv("stats.tsv", /*function(d) {
+             d['attendance'] = +d['attendance'];
+             d['date'] = format.parse(d['date']);
+             return d;
+      },*/ plot_points);
+ 
+    };
+    </script>
+  <script type="text/javascript">
+  /*
+    Use D3 to load the GeoJSON file
+    */
+    d3.json("europe.json", function(error, europe) {
+                              if (error) return console.error(error);
+                              draw(europe);
+    });
+  </script>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Bootstrap - latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>
+</html>
