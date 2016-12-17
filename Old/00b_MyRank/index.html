@@ -55,7 +55,7 @@
         shape-rendering: crispEdges;
     }
     .bars rect {
-        fill:steelblue;
+        /*fill:steelblue;*/
         fill-opacity:.9;
     }
     .title {
@@ -99,6 +99,7 @@
       function drawTask1Int2(europe) {
         //"use strict";
         //if (error) return console.error(error);
+        var ditCriteria = 'Population growth (annual %)'; 
         
         // deal with 0 data
         function ditCkeckNum(n) {
@@ -171,15 +172,15 @@
             
             // order by total population
             filtered = filtered.sort(function(a, b) {
-                    return +b['Population, total'] - +a['Population, total'];
+                    return +b[ditCriteria] - +a[ditCriteria];
             });
             
             //filtered = filtered.slice(0,40);
             
             gjbrfilt = filtered;            
             
-            var xMax = d3.max(filtered, function(d) { return +d['Population, total']; } );
-            var xMin = 0;
+            var xMax = d3.max(filtered, function(d) { return Math.abs(+d[ditCriteria]); } );
+            var xMin = 0;//d3.min(filtered, function(d) { return +d[ditCriteria]; } );
 
             var xScale = d3.scale.linear().range([0, width]).domain([xMin, xMax]);
             var yScale = d3.scale.ordinal().rangeRoundBands([0, height], 1.8,0);
@@ -210,34 +211,17 @@
                         .data(filtered)
                         .enter()
                         .append("g");
-                        
-            groups.append("text")
-                    .attr("x", "0")
-                    .attr("y", function(d) { return yScale(d['Country Code']); })
-                    .text(function(d) { return d['Country Code']; })
-                    .attr("text-anchor", "end")
-                    .attr("dy", ".9em")
-                    .attr("dx", "-.32em")
-                    .attr("id", function(d,i) { return "label"+i; });
-                    
+                   
             var bars = groups
                         .attr("class", "bars")
                         .append("rect")
-                        .attr("width", function(d) { return xScale(+d['Population, total']); })
+                        .attr("width", function(d) { return xScale(Math.abs(+d[ditCriteria])); })
                         .attr("height", height/filtered.length)
                         .attr("x", xScale(xMin))
                         .attr("y", function(d) { return yScale(d['Country Code']); })
-                        .attr("id", function(d,i) { return "bar"+i; });
-                        
-            var texts = groups.append("text")
-                    .attr("x", function(d) { return xScale(+d['Population, total']); })
-                    .attr("y", function(d) { return yScale(d['Country Code']); })
-                    .text(function(d) { return ditCkeckNum(d['Population, total']); })
-                    .attr("text-anchor", "start")
-                    .attr("dy", "1.2em")
-                    .attr("dx", "0.32em")
-                    .attr("id", "precise-value");
-                  
+                        .attr("id", function(d,i) { return "bar"+i; })
+                        .style('fill', function(d) { if (+d[ditCriteria] < 0) {return 'Orange';} return 'Green';})
+                        ;
             bars
                 .on("mouseover", function(d) {
                     var currentGroup = d3.select(this.parentNode);
@@ -246,33 +230,16 @@
                     tooltip.classed("hidden", false);
                     ditCountryname.text(d['Country Code']);
                     ditYear.text(d['Time']);
-                    ditPopulation.text( ditCkeckNum(d['Population, total']) );
+                    ditPopulation.text( ditCkeckNum(d[ditCriteria]) );
                 })
-                .on("mouseout", function() {
+                .on("mouseout", function(d) {
                     var currentGroup = d3.select(this.parentNode);
-                    currentGroup.select("rect").style("fill", "steelblue");
-                    currentGroup.select("text").style("font-weight", "normal");
-                    tooltip.classed("hidden", true);
-                });
-            
-           
-            texts
-                .on("mouseover", function(d) {
-                    var currentGroup = d3.select(this.parentNode);
-                    currentGroup.select("rect").style("fill", "brown");
-                    currentGroup.select("text").style("font-weight", "bold");
-                    tooltip.classed("hidden", false);
-                    ditCountryname.text(d['Country Code']);
-                    ditYear.text(d['Time']);
-                    ditPopulation.text( ditCkeckNum(d['Population, total']) );
-                })
-                .on("mouseout", function() {
-                    var currentGroup = d3.select(this.parentNode);
-                    currentGroup.select("rect").style("fill", "steelblue");
+                    currentGroup.select("rect").style("fill", function(d) { if (+d[ditCriteria] < 0) {return 'Orange';} return 'Green'; });
                     currentGroup.select("text").style("font-weight", "normal");
                     tooltip.classed("hidden", true);
                 });
                 
+            // put axis after bar but before text
             x.call(xAxis);
             var grid = xScale.ticks(numTicks);
             barSvg.append("g").attr("class", "grid")
@@ -287,6 +254,42 @@
                     .attr("stroke", "white")
                     //.attr("opacity", 1)
                     ;
+                   
+            groups.append("text")
+                    .attr("x", "0")
+                    .attr("y", function(d) { return yScale(d['Country Code']); })
+                    .text(function(d) { return d['Country Code']; })
+                    .attr("text-anchor", "end")
+                    .attr("dy", ".9em")
+                    .attr("dx", "-.32em")
+                    .attr("id", function(d,i) { return "label"+i; });
+                   
+            var texts = groups.append("text")
+                    .attr("x", function(d) { return xScale(Math.abs(+d[ditCriteria])); })
+                    .attr("y", function(d) { return yScale(d['Country Code']); })
+                    .text(function(d) { return ditCkeckNum(d[ditCriteria]); })
+                    .attr("text-anchor", "start")
+                    .attr("dy", "1.2em")
+                    .attr("dx", "0.32em")
+                    .attr("id", "precise-value");
+           
+            texts
+                .on("mouseover", function(d) {
+                    var currentGroup = d3.select(this.parentNode);
+                    currentGroup.select("rect").style("fill", "brown");
+                    currentGroup.select("text").style("font-weight", "bold");
+                    tooltip.classed("hidden", false);
+                    ditCountryname.text(d['Country Code']);
+                    ditYear.text(d['Time']);
+                    ditPopulation.text( ditCkeckNum(d[ditCriteria]) );
+                })
+                .on("mouseout", function() {
+                    var currentGroup = d3.select(this.parentNode);
+                    currentGroup.select("rect").style("fill", function(d) { if (+d[ditCriteria] < 0) {return 'Orange';} return 'Green'; });
+                    currentGroup.select("text").style("font-weight", "normal");
+                    tooltip.classed("hidden", true);
+                });
+
         }
         
         /*
