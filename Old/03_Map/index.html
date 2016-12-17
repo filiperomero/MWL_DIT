@@ -172,7 +172,7 @@
               
               var circles = svg//.select('g[class="bubble"]')
                                .selectAll('circle')
-                               .data(filtered/*, key_func*/);
+                               .data(filtered, key_func);
 
               
               circles.exit().remove();
