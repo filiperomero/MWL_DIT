@@ -16,9 +16,14 @@
 
             function dimpleDoIt(country) {
 
-                      // filter by year
+                      // filter by country
                       var filtered = europe.filter(function(d) {
                           return d['Country Code'] === country;
+                      });
+                      
+                      // filter by unknown data
+                      var filtered = filtered.filter(function(d) {
+                          return d['Unemployment, total (% of total labor force) (modeled ILO estimate)'] != 0;
                       });
 
                       var margin = 75,
@@ -36,7 +41,7 @@
                       
                       var myChart = new dimple.chart(svg, filtered);
                       var x = myChart.addTimeAxis("x", "Time"); 
-                      myChart.addMeasureAxis("y", "Population, total");
+                      myChart.addMeasureAxis("y", "Unemployment, total (% of total labor force) (modeled ILO estimate)");
                       x.dateParseFormat = "%Y";
                       x.tickFormat = "%Y";
                       x.timeInterval = 1;
