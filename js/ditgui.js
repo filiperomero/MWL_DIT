@@ -37,7 +37,7 @@ var ditDataUnWithTertEdu = "Unemployment with tertiary education (% of total une
 var ditDataUnWithTertEduF = "Unemployment with tertiary education, female (% of female unemployment)";
 var ditDataUnF = "Unemployment, female (% of female labor force)";
 
-var DitDataUnArr = [
+var ditDataUnArr = [
 ditDataUnTotal        ,
 ditDataUnYoung        ,
 ditDataUnYoungF       ,
@@ -82,10 +82,22 @@ function ditEmptyContent() {
 
 function ditShowInstructions() {
     console.log("ditShowInstructions");
-    if (dit.task == 1) {
-        ditShowDiv("#ditinst1");
-    } else if (dit.task == 2) {
-        ditShowDiv("#ditinst2");
+    
+    if (dit.task == 1 && dit.interface == 1) {
+        ditShowDiv("#ditinst1i1");
+        ditShowTask1Int1();
+    }
+    else if (dit.task == 1 && dit.interface == 2) {
+        ditShowDiv("#ditinst1i2");
+        ditShowTask1Int2();
+    }
+    else if (dit.task == 2 && dit.interface == 1) {
+        ditShowDiv("#ditinst2i1");
+        ditShowTask2Int1();
+    }
+    else if (dit.task == 2 && dit.interface == 2) {
+        ditShowDiv("#ditinst2i2");
+        ditShowTask2Int2();
     }
 }
 
@@ -581,8 +593,8 @@ function ditShowTask2Int1() {
                          
                           filtered = filtered.map(function(x) {
                               var y = x;
-                              for (i=0;i<DitDataUnArr.length;i++) {
-                                  x[DitDataUnArr[i]] = ditCkeckNum(x[DitDataUnArr[i]]);
+                              for (i=0;i<ditDataUnArr.length;i++) {
+                                  x[ditDataUnArr[i]] = ditCkeckNum(x[ditDataUnArr[i]]);
                               }
                               return y;
                           });
@@ -599,7 +611,11 @@ function ditShowTask2Int1() {
                           
                           myChart.addSeries(null, dimple.plot.line);
                           //myChart.addSeries(null, dimple.plot.scatter);
-                          myChart.addSeries(DitDataUnArr, dimple.plot.scatter);
+                          // do not show the unemployment total % since the chart will already show it automatically
+                          var extraInfo= ditDataUnArr.slice(0);
+                          extraInfo.splice(ditDataUnArr.indexOf(ditDataUnTotal), 1);
+                          
+                          myChart.addSeries(extraInfo, dimple.plot.scatter);
                           
                           //console.table(filtered);
                           
@@ -663,7 +679,7 @@ function ditShowTask2Int2() {
         });
         
         // get columns names
-        var columns = DitDataUnArr.slice(0);
+        var columns = ditDataUnArr.slice(0);
         columns.unshift(ditDataName);
         /*var columns = Object.keys(data[0]);
 
@@ -711,8 +727,8 @@ function ditShowTask2Int2() {
             // handle no info tuples
             filtered = filtered.map(function(x) {
                 var y = x;
-                for (i=0;i<DitDataUnArr.length;i++) {
-                    x[DitDataUnArr[i]] = ditCkeckNum(x[DitDataUnArr[i]]);
+                for (i=0;i<ditDataUnArr.length;i++) {
+                    x[ditDataUnArr[i]] = ditCkeckNum(x[ditDataUnArr[i]]);
                 }
                 return y;
             });
