@@ -14,16 +14,14 @@ var ditDataName = "Country Name";
 var ditDataYear = "Year";
 
 // Stats Data - Population
-var ditDataPopDeathRate  = "Death rate, crude (per 1,000 people)";
+var ditDataPopTotal      = "Population, total";
+var ditDataPopF          = "Population, female (% of total)";  
+var ditDataPop0to14      = "Population ages 0-14 (% of total)";   
+var ditDataPop15to64     = "Population ages 15-64 (% of total)";  
+var ditDataPop65         = "Population ages 65 and above (% of total)";  
+var ditDataPopGrowth     = "Population growth (annual %)";  
 var ditDataPopDeathRate  = "Death rate, crude (per 1,000 people)";
 var ditDataPopLifeExpect = "Life expectancy at birth, total (years)";
-var ditDataPop0to14 = "Population ages 0-14 (% of total)";   
-var ditDataPop15to64 = "Population ages 15-64 (% of total)";  
-var ditDataPop65 = "Population ages 65 and above (% of total)";  
-var ditDataPopGrowth = "Population growth (annual %)";  
-var ditDataPopF = "Population, female (% of total)";  
-var ditDataPopTotal = "Population, total";
-
 
 // Stats Data - Population
 var ditDataUnTotal = "Unemployment, total (% of total labor force)";
@@ -130,10 +128,12 @@ function ditStartTask() {
 
 }
 
+var ditNA = "N/A or Unknown";
+
 // deal with 0 data
 function ditCkeckNum(n) {
     if (n == 0) {
-        return "N/A or Unknown"
+        return ditNA
     }
     return n;
 }
@@ -144,7 +144,7 @@ function ditShowTask1Int1() {
       function drawTask1Int1(europe) {
         var ditCriteria = ditDataPopGrowth; 
         
-        var margin = {top: 50, bottom: 50, left:100, right: 100};
+        var margin = {top: 50, bottom: 500, left:170, right: 100};
         var width = 1200 - margin.left - margin.right;
         var height = 2000 - margin.top - margin.bottom;
 
@@ -178,9 +178,16 @@ function ditShowTask1Int1() {
                     .attr("class", "base-svg");
                     
         var tooltip = d3.select("#tooltip").classed("hidden", true),
-            ditCountryname = d3.select("#ditCountryname"),
-            ditYear = d3.select("#ditYear"),
-            ditPopulation = d3.select("#ditPopulation"),
+            ditCountrynameTtip       = d3.select("#ditCountryname"),
+            ditYearTtip              = d3.select("#ditYear"),
+            ditDataPopTotalTtip      = d3.select("#ditDataPopTotal"),
+            ditDataPopFTtip          = d3.select("#ditDataPopF"),
+            ditDataPop0to14Ttip      = d3.select("#ditDataPop0to14"),
+            ditDataPop15to64Ttip     = d3.select("#ditDataPop15to64"),
+            ditDataPop65Ttip         = d3.select("#ditDataPop65"),
+            ditDataPopGrowthTtip     = d3.select("#ditDataPopGrowth"),
+            ditDataPopDeathRateTtip  = d3.select("#ditDataPopDeathRate"),
+            ditDataPopLifeExpectTtip = d3.select("#ditDataPopLifeExpect"),
             format = d3.format(" 2.2f");
 
         svg.on("mousemove", function() {
@@ -225,9 +232,10 @@ function ditShowTask1Int1() {
             
             var numTicks = 5;
             var xAxis = d3.svg.axis().scale(xScale)
-                            //.orient("top")
+                            .orient("top")
                             .tickSize((-height))
                             .ticks(numTicks)
+                            .tickFormat(function(d) { return d + "%"; });
                             ;
                 
             d3.select("#ditTask1Int1Title")
@@ -255,9 +263,16 @@ function ditShowTask1Int1() {
                     currentGroup.select("rect").style("fill", "brown");
                     currentGroup.select("text").style("font-weight", "bold");
                     tooltip.classed("hidden", false);
-                    ditCountryname.text(d[ditDataCode]);
-                    ditYear.text(d[ditDataYear]);
-                    ditPopulation.text( ditCkeckNum(d[ditCriteria]) );
+                    ditCountrynameTtip.text(ditDataName + ": " + d[ditDataName]);
+                    ditYearTtip.text(ditDataYear + ": " + d[ditDataYear]);
+                    ditDataPopTotalTtip.text(ditDataPopTotal + ": " + ditCkeckNum(d[ditDataPopTotal]));
+                    ditDataPopFTtip.text(ditDataPopF + ": " + ditCkeckNum(d[ditDataPopF]));
+                    ditDataPop0to14Ttip.text(ditDataPop0to14 + ": " + ditCkeckNum(d[ditDataPop0to14]));
+                    ditDataPop15to64Ttip.text(ditDataPop15to64 + ": " + ditCkeckNum(d[ditDataPop15to64]));
+                    ditDataPop65Ttip.text(ditDataPop65 + ": " + ditCkeckNum(d[ditDataPop65]));
+                    ditDataPopGrowthTtip.text(ditDataPopGrowth + ": " + ditCkeckNum(d[ditDataPopGrowth]));
+                    ditDataPopDeathRateTtip.text(ditDataPopDeathRate + ": " + ditCkeckNum(d[ditDataPopDeathRate]));
+                    ditDataPopLifeExpectTtip.text(ditDataPopLifeExpect + ": " + ditCkeckNum(d[ditDataPopLifeExpect]));
                 })
                 .on("mouseout", function(d) {
                     var currentGroup = d3.select(this.parentNode);
@@ -285,7 +300,7 @@ function ditShowTask1Int1() {
             groups.append("text")
                     .attr("x", "0")
                     .attr("y", function(d) { return yScale(d[ditDataCode]); })
-                    .text(function(d) { return d[ditDataCode]; })
+                    .text(function(d) { return d[ditDataName]; })
                     .attr("text-anchor", "end")
                     .attr("dy", ".9em")
                     .attr("dx", "-.32em")
@@ -294,7 +309,14 @@ function ditShowTask1Int1() {
             var texts = groups.append("text")
                     .attr("x", function(d) { return xScale(Math.abs(+d[ditCriteria])); })
                     .attr("y", function(d) { return yScale(d[ditDataCode]); })
-                    .text(function(d) { return ditCkeckNum(d[ditCriteria]); })
+                    .text(function(d) {
+                        var x = ditCkeckNum(d[ditCriteria]);
+                        if (x != ditNA) {
+                            x = Math.round(+x * 100) / 100;
+                            x = x+"%";
+                        }
+                        return x;
+                     })
                     .attr("text-anchor", "start")
                     .attr("dy", "1.2em")
                     .attr("dx", "0.32em")
@@ -306,9 +328,16 @@ function ditShowTask1Int1() {
                     currentGroup.select("rect").style("fill", "brown");
                     currentGroup.select("text").style("font-weight", "bold");
                     tooltip.classed("hidden", false);
-                    ditCountryname.text(d[ditDataCode]);
-                    ditYear.text(d[ditDataYear]);
-                    ditPopulation.text( ditCkeckNum(d[ditCriteria]) );
+                    ditCountrynameTtip.text(ditDataName + ": " + d[ditDataName]);
+                    ditYearTtip.text(ditDataYear + ": " + d[ditDataYear]);
+                    ditDataPopTotalTtip.text(ditDataPopTotal + ": " + ditCkeckNum(d[ditDataPopTotal]));
+                    ditDataPopFTtip.text(ditDataPopF + ": " + ditCkeckNum(d[ditDataPopF]));
+                    ditDataPop0to14Ttip.text(ditDataPop0to14 + ": " + ditCkeckNum(d[ditDataPop0to14]));
+                    ditDataPop15to64Ttip.text(ditDataPop15to64 + ": " + ditCkeckNum(d[ditDataPop15to64]));
+                    ditDataPop65Ttip.text(ditDataPop65 + ": " + ditCkeckNum(d[ditDataPop65]));
+                    ditDataPopGrowthTtip.text(ditDataPopGrowth + ": " + ditCkeckNum(d[ditDataPopGrowth]));
+                    ditDataPopDeathRateTtip.text(ditDataPopDeathRate + ": " + ditCkeckNum(d[ditDataPopDeathRate]));
+                    ditDataPopLifeExpectTtip.text(ditDataPopLifeExpect + ": " + ditCkeckNum(d[ditDataPopLifeExpect]));
                 })
                 .on("mouseout", function() {
                     var currentGroup = d3.select(this.parentNode);
@@ -319,7 +348,7 @@ function ditShowTask1Int1() {
 
         }
         
-        update(ditFirstYear);
+        //update(ditFirstYear);
         
     };
 
@@ -332,9 +361,16 @@ function ditShowTask1Int2() {
    function draw(europe) {
           
         var tooltip = d3.select("#tooltip").classed("hidden", true),
-            ditCountryname = d3.select("#ditCountryname"),
-            ditYear = d3.select("#ditYear"),
-            ditPopulation = d3.select("#ditPopulation"),
+            ditCountrynameTtip       = d3.select("#ditCountryname"),
+            ditYearTtip              = d3.select("#ditYear"),
+            ditDataPopTotalTtip      = d3.select("#ditDataPopTotal"),
+            ditDataPopFTtip          = d3.select("#ditDataPopF"),
+            ditDataPop0to14Ttip      = d3.select("#ditDataPop0to14"),
+            ditDataPop15to64Ttip     = d3.select("#ditDataPop15to64"),
+            ditDataPop65Ttip         = d3.select("#ditDataPop65"),
+            ditDataPopGrowthTtip     = d3.select("#ditDataPopGrowth"),
+            ditDataPopDeathRateTtip  = d3.select("#ditDataPopDeathRate"),
+            ditDataPopLifeExpectTtip = d3.select("#ditDataPopLifeExpect"),
             format = d3.format(" 2.2f");
       
         var margin = 75,
@@ -445,9 +481,16 @@ function ditShowTask1Int2() {
                  .on("mouseover", function(d,i) {
                       d3.select(this).style({'stroke-opacity':1,'stroke':'brown'});
                       tooltip.classed("hidden", false);
-                      ditCountryname.text("Country: " + d[ditDataCode]);
-                      ditYear.text("Year: " + d[ditDataYear]);
-                      ditPopulation.text(ditCriteria + " Population: " + d[ditCriteria]);
+                      ditCountrynameTtip.text(ditDataName + ": " + d[ditDataName]);
+                      ditYearTtip.text(ditDataYear + ": " + d[ditDataYear]);
+                      ditDataPopTotalTtip.text(ditDataPopTotal + ": " + ditCkeckNum(d[ditDataPopTotal]));
+                      ditDataPopFTtip.text(ditDataPopF + ": " + ditCkeckNum(d[ditDataPopF]));
+                      ditDataPop0to14Ttip.text(ditDataPop0to14 + ": " + ditCkeckNum(d[ditDataPop0to14]));
+                      ditDataPop15to64Ttip.text(ditDataPop15to64 + ": " + ditCkeckNum(d[ditDataPop15to64]));
+                      ditDataPop65Ttip.text(ditDataPop65 + ": " + ditCkeckNum(d[ditDataPop65]));
+                      ditDataPopGrowthTtip.text(ditDataPopGrowth + ": " + ditCkeckNum(d[ditDataPopGrowth]));
+                      ditDataPopDeathRateTtip.text(ditDataPopDeathRate + ": " + ditCkeckNum(d[ditDataPopDeathRate]));
+                      ditDataPopLifeExpectTtip.text(ditDataPopLifeExpect + ": " + ditCkeckNum(d[ditDataPopLifeExpect]));
                  })
                  .on("mouseout", function(d) {
                     d3.select(this).style({'stroke':'none'});
@@ -540,10 +583,14 @@ function ditShowTask2Int1() {
                           x.dateParseFormat = "%Y";
                           x.tickFormat = "%Y";
                           x.timeInterval = 1;
+                          
+                          // dimple.chart.setMargins(left, top, right, bottom
+                          myChart.setMargins("10%,20px", "10%,20px", "10%,20px","10%,20px"); 
+                          
                           myChart.addSeries(null, dimple.plot.line);
                           //myChart.addSeries(null, dimple.plot.scatter);
                           myChart.addSeries(DitDataUnArr, dimple.plot.scatter);
-                           
+                          
                           //console.table(filtered);
                           
                           myChart.draw();
@@ -652,13 +699,16 @@ function ditShowTask2Int2() {
                            });
             
             // handle no info tuples
-            filtered = filtered.map(function(x) {
+            filtered2 = filtered.map(function(x) {
                 var y = x;
                 for (i=0;i<DitDataUnArr.length;i++) {
                     x[DitDataUnArr[i]] = ditCkeckNum(x[DitDataUnArr[i]]);
                 }
                 return y;
             });
+            
+            
+            ditCkeckNum
 
             // create a row for each object in the data
             var rows = tbody.selectAll("tr")
@@ -681,7 +731,7 @@ function ditShowTask2Int2() {
             return table;
         }
         
-        update("2014");
+        update(ditFirstYear);
     };
     
     /* Use D3 to load the data file */
@@ -795,8 +845,3 @@ function ditFinish(e) {
     
     window.location.replace("http://filipe.lucalongo.eu/");
 }
-
-
-
-
-
