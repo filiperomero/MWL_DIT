@@ -41,9 +41,9 @@
   </div>
   
   <div class="container">
-    <div class="main text-justify" id="ditmain">
+    <div class="main lead text-justify" id="ditmain">
       
-          <div id="ditwelcome" class="ditdiv lead">
+          <div id="ditwelcome" class="ditdiv">
                       <h1 class="text-center">Welcome</h1>     
                       
                       <!--welcome message row start-->
@@ -77,7 +77,7 @@
                       <!-- buttons end-->
           </div> <!-- dit welcome end-->
 
-          <div id="ditsurvey" class="ditdiv lead hidden">
+          <div id="ditsurvey" class="ditdiv hidden">
 
               <!--survey row start-->
               <div class="row"> 
@@ -371,7 +371,7 @@
 
           </div> <!-- dit survey end-->
 
-          <div id="ditinst1" class="ditdiv lead hidden">
+          <div id="ditinst1" class="ditdiv hidden">
                       <h2 class="text-center">Instructions - Task 1</h2>     
                       
                       <!--instructions 1 row start-->
@@ -396,7 +396,7 @@
                       <!-- buttons end-->
           </div> <!-- dit ditinst1 end-->
           
-          <div id="ditinst2" class="ditdiv lead hidden">
+          <div id="ditinst2" class="ditdiv hidden">
                       <h2 class="text-center">Instructions - Task 2</h2>     
                       
                       <!--instructions 2 row start-->
@@ -421,7 +421,7 @@
                       <!-- buttons end-->
           </div> <!-- dit ditinst2 end-->
       
-          <div id="dittask" class="ditdiv lead hidden">
+          <div id="dittask" class="ditdiv hidden">
                       <h2 class="text-center">Execute Task</h2>    
                       <!-- buttons start-->
                       <div class="row"> 
@@ -462,56 +462,7 @@
           
                      <form class="form-inline">
                          <fieldset class="form-group row" id="ditTask2Int1Field">
-                             <label>Select Country:</label>
-                             <select id="ditTask2Int1Opts">
-                                <option value="AND">Andorra</option>
-                                <option value="ALB">Albania</option>
-                                <option value="AUT">Austria</option>
-                                <option value="BCR">Belgium</option>
-                                <option value="BGR">Bulgaria</option>
-                                <option value="BHF">Bosnia and Herzegovina</option>
-                                <option value="BLR">Belarus</option>
-                                <option value="CHE">Switzerland</option>
-                                <option value="JEY">Jersey</option>
-                                <option value="CZE">Czech Republic</option>
-                                <option value="DEU">Germany</option>
-                                <option value="DNK">Denmark</option>
-                                <option value="ESX">Spain</option>
-                                <option value="EST">Estonia</option>
-                                <option value="FIN">Finland</option>
-                                <option value="FXX">France</option>
-                                <option value="FRO">Faroe Islands</option>
-                                <option value="ENG">United Kingdom</option>
-                                <option value="GIB">Gibraltar</option>
-                                <option value="GRC">Greece</option>
-                                <option value="HRV">Croatia</option>
-                                <option value="HUN">Hungary</option>
-                                <option value="IMN">Isle of Man</option>
-                                <option value="IRL">Ireland</option>
-                                <option value="ISL">Iceland</option>
-                                <option value="ITX">Italy</option>
-                                <option value="KOS">Kosovo</option>
-                                <option value="LIE">Liechtenstein</option>
-                                <option value="LTU">Lithuania</option>
-                                <option value="LUX">Luxembourg</option>
-                                <option value="LVA">Latvia</option>
-                                <option value="MCO">Monaco</option>
-                                <option value="MDA">Moldova</option>
-                                <option value="MKD">Macedonia</option>
-                                <option value="MNE">Montenegro</option>
-                                <option value="NLX">Netherlands</option>
-                                <option value="NOW">Norway</option>
-                                <option value="POL">Poland</option>
-                                <option value="PRX">Portugal</option>
-                                <option value="ROU">Romania</option>
-                                <option value="RUE">Russia</option>
-                                <option value="SMR">San Marino</option>
-                                <option value="SRS">Republic of Serbia</option>
-                                <option value="SVK">Slovakia</option>
-                                <option value="SVN">Slovenia</option>
-                                <option value="SWE">Sweden</option>
-                                <option value="UKR">Ukraine</option>
-                             </select>
+                             <label>Select Year:</label>
                          </fieldset>
                          <button id="ditbtnendtask2i1" type="button" class="btn btn-primary pull-right">Finish Task</button>
                          <fieldset><h2 id="ditTask2Int1Title"></h2></fieldset>
@@ -531,7 +482,7 @@
           
           </div> <!-- ditTask2Int2 end-->
           
-          <div id="dittask1survey" class="ditdiv lead hidden">
+          <div id="dittask1survey" class="ditdiv hidden">
                       <h2 class="text-center">Task 1 Survey</h2>   
                       <!-- buttons start-->
                       <div class="row"> 
@@ -544,7 +495,7 @@
                       <!-- buttons end-->
           </div> <!-- dittask1survey end-->
 
-          <div id="dittask2survey" class="ditdiv lead hidden">
+          <div id="dittask2survey" class="ditdiv hidden">
                       <h2 class="text-center">Task 2 Survey</h2>   
                       <!-- buttons start-->
                       <div class="row"> 
@@ -557,7 +508,7 @@
                       <!-- buttons end-->
           </div> <!-- dittask2survey end-->
           
-          <div id="ditselfmwl" class="ditdiv lead hidden">
+          <div id="ditselfmwl" class="ditdiv hidden">
                       
                       <!--bye message row start-->
                       <div class="row"> 
@@ -663,7 +614,7 @@
                       
           </div> <!-- ditselfmwl end-->
 
-          <div id="ditthanksbye" class="ditdiv lead hidden">
+          <div id="ditthanksbye" class="ditdiv hidden">
                       <h1 class="text-center">Thank you!</h1>     
                       
                     <!--bye message row start-->
