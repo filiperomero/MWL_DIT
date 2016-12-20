@@ -579,6 +579,14 @@ function ditShowTask2Int1() {
                           alert("There is no data recorded for the selected country");
                       } else {
                          
+                          filtered = filtered.map(function(x) {
+                              var y = x;
+                              for (i=0;i<DitDataUnArr.length;i++) {
+                                  x[DitDataUnArr[i]] = ditCkeckNum(x[DitDataUnArr[i]]);
+                              }
+                              return y;
+                          });
+                          
                           var myChart = new dimple.chart(svg, filtered);
                           var x = myChart.addTimeAxis("x", ditDataYear); 
                           myChart.addMeasureAxis("y", ditDataUnTotal);
@@ -701,16 +709,13 @@ function ditShowTask2Int2() {
                            });
             
             // handle no info tuples
-            filtered2 = filtered.map(function(x) {
+            filtered = filtered.map(function(x) {
                 var y = x;
                 for (i=0;i<DitDataUnArr.length;i++) {
                     x[DitDataUnArr[i]] = ditCkeckNum(x[DitDataUnArr[i]]);
                 }
                 return y;
             });
-            
-            
-            ditCkeckNum
 
             // create a row for each object in the data
             var rows = tbody.selectAll("tr")
@@ -733,7 +738,7 @@ function ditShowTask2Int2() {
             return table;
         }
         
-        update(ditFirstYear);
+        update("1980");
     };
     
     /* Use D3 to load the data file */
