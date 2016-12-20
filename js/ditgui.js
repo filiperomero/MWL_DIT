@@ -358,6 +358,8 @@ function ditShowTask1Int1() {
 function ditShowTask1Int2() {
     console.log("ditShowTask1Int2");
     
+    d3.selectAll("#ditTask1Int2FieldGroup").classed("hidden", true);
+    
    function draw(europe) {
           
         var tooltip = d3.select("#tooltip").classed("hidden", true),
@@ -374,8 +376,8 @@ function ditShowTask1Int2() {
             format = d3.format(" 2.2f");
       
         var margin = 75,
-            width = 972 - margin,
-            height = 615 - margin;
+            width = 1000 - margin,
+            height = 650 - margin;
         
         var years = [];
 
@@ -384,7 +386,7 @@ function ditShowTask1Int2() {
         }
 
         //create svg for the map
-        var svg = d3.select("body")
+        var svg = d3.select("#ditTask1Int2")
             .append("svg")
             .attr("width", width + margin)
             .attr("height", height + margin);
@@ -400,7 +402,7 @@ function ditShowTask1Int2() {
             
         svg.on("mousemove", function() {
             // update tooltip position
-            tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            tooltip.style("top", (event.pageY-200)+"px").style("left",(event.pageX+10)+"px");
             return true;
           });
 
@@ -458,7 +460,7 @@ function ditShowTask1Int2() {
               });
               
               d3.select("#ditTask1Int2Title")
-                  .text("Total Population " + year);
+                  .text("Population growth (annual %) - " + year);
               
               var circles = svg//.select('g[class="bubble"]')
                                .selectAll('circle')
@@ -504,12 +506,12 @@ function ditShowTask1Int2() {
             
                 update(years[year_idx].toString());
 
-                year_idx = year_idx + 10;
+                year_idx = year_idx + 4;
 
                 if(year_idx >= years.length) {
                     clearInterval(year_interval);
                 
-                    d3.selectAll("#ditTask1Int2Field").classed("hidden", false);
+                    d3.selectAll("#ditTask1Int2FieldGroup").classed("hidden", false);
                 
                     var options = d3.select("#ditTask1Int2Field")
                         .append("select")
@@ -528,7 +530,7 @@ function ditShowTask1Int2() {
                             update(key);
                     });
                 }
-            }, 1000);
+            }, 1500);
 
       };
       
