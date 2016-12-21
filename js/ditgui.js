@@ -629,6 +629,8 @@ function ditShowTask2Int1() {
                       key = this[this.selectedIndex].value;
                       dimpleDoIt(key);
               });
+              
+              dimpleDoIt("ALB");
            
     };
                                 
@@ -731,6 +733,13 @@ function ditShowTask2Int2() {
                     x[ditDataUnArr[i]] = ditCkeckNum(x[ditDataUnArr[i]]);
                 }
                 return y;
+            });
+            
+            // order by country
+            filtered.sort(function(a,b) {
+                 var compA = a[ditDataName].toUpperCase();
+                 var compB = b[ditDataName].toUpperCase();
+                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
             });
 
             // create a row for each object in the data
