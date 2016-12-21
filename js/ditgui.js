@@ -455,7 +455,7 @@ function ditShowTask1Int2() {
             
             var radius = d3.scale.sqrt()
                            .domain([0, population_max])
-                           .range([0, 15]);
+                           .range([0, 20]);
 
             function key_func(d) {
                 return d[ditDataYear];
@@ -489,8 +489,10 @@ function ditShowTask1Int2() {
                  .attr("transform", function(d) {return "translate(" + country_centers[d[ditDataCode]] + ")";})
                  .attr('r', function(d) {return radius(Math.abs(+d[ditCriteria]));})
                  .style('fill', function(d) { if (+d[ditCriteria] < 0) {return 'Yellow';} return 'Green';})
+                 .style('stroke','black')
+                 .style('stroke-width','0.5')
                  .on("mouseover", function(d,i) {
-                      d3.select(this).style({'stroke-opacity':1,'stroke':'brown'});
+                      d3.select(this).style({'stroke-opacity':1,'stroke':'brown','stroke-width':0.5})
                       tooltip.classed("hidden", false);
                       ditCountrynameTtip.text(ditDataName + ": " + d[ditDataName]);
                       ditYearTtip.text(ditDataYear + ": " + d[ditDataYear]);
@@ -504,7 +506,8 @@ function ditShowTask1Int2() {
                       ditDataPopLifeExpectTtip.text(ditDataPopLifeExpect + ": " + ditCkeckNum(d[ditDataPopLifeExpect]));
                  })
                  .on("mouseout", function(d) {
-                    d3.select(this).style({'stroke':'none'});
+                    //d3.select(this).style({'stroke':'none'});
+                    d3.select(this).style({'stroke':'black'});
                     tooltip.classed("hidden", true);
                  });
           };
