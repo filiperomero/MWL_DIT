@@ -37,13 +37,20 @@
   <div id="tooltip" class="hidden">
     <p id="ditCountryname"></p>
     <p id="ditYear"></p>
-    <p id="ditPopulation"></p>
+    <p id="ditDataPopTotal"></p>
+    <p id="ditDataPopF"></p>
+    <p id="ditDataPop0to14"></p>
+    <p id="ditDataPop15to64"></p>
+    <p id="ditDataPop65"></p>  
+    <p id="ditDataPopGrowth"></p>
+    <p id="ditDataPopDeathRate"></p>
+    <p id="ditDataPopLifeExpect"></p>
   </div>
   
   <div class="container">
-    <div class="main lead text-justify" id="ditmain">
+    <div class="main text-justify" id="ditmain">
       
-          <div id="ditwelcome" class="ditdiv">
+          <div id="ditwelcome" class="ditdiv lead">
                       <h1 class="text-center">Welcome</h1>     
                       
                       <!--welcome message row start-->
@@ -77,7 +84,7 @@
                       <!-- buttons end-->
           </div> <!-- dit welcome end-->
 
-          <div id="ditsurvey" class="ditdiv hidden">
+          <div id="ditsurvey" class="ditdiv lead hidden">
 
               <!--survey row start-->
               <div class="row"> 
@@ -371,15 +378,17 @@
 
           </div> <!-- dit survey end-->
 
-          <div id="ditinst1" class="ditdiv hidden">
+          <div id="ditinst1i1" class="ditdiv lead hidden">
                       <h2 class="text-center">Instructions - Task 1</h2>     
                       
                       <!--instructions 1 row start-->
                       <div class="row"> 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
-                          
-                            <p>sdsklçsdc ld ksd k skdçds çdçdçs ççsddd h.</p>
-                            <p>sdçs  ddd  ttt kkkk kkkk kk </p>
+                              <p>You are going to have access to dataset displaying the population growth for the past decades for most of countries in the euro zone (source: <a href="http://databank.worldbank.org/data/home.aspx"> World DataBank </a>). </p>
+                              <p>At the top of the page you will be provided with a dropdown list (<img src="img/ditselectyear.PNG" alt="Select Year" align="middle" style="width:100px;height:40px;">) that will allow you to choose the year you want to explore. After selecting a year a bar chart will be displayed where a single bar represents each country. The countries will be ordered from the country with the biggest Population Growth % Increase to the country with the least Population Growth % Decrease.</p>
+                              <p>If you point your mouse pointer over a country’s bar you will be able to see more information regarding population statistics for the country and for the previously selected year. The following image shows extra info for Ireland that can be visualized by “mousing hover” Ireland’s bar:</p>
+                              <img src="img/ditt1i1.png" alt="Mouse Over Extra Infor" style="border:1px solid black"> 
+                              <p>I would like that you take your time exploring the dataset at your will, looking for what you find interesting. When you feel you don't want to explore the dataset any more please press this button (<img src="img/ditfintask.PNG" alt="Finish Task" align="middle" style="width:100px;height:40px;">) in order to complete the second and last part of this web experiment.</p>
                           </div>
                           
                       </div>
@@ -389,22 +398,60 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk1" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk1i1" type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
                       <!-- buttons end-->
-          </div> <!-- dit ditinst1 end-->
+          </div> <!-- dit ditinst1i1 end-->
           
-          <div id="ditinst2" class="ditdiv hidden">
+          <div id="ditinst1i2" class="ditdiv lead hidden">
+                      <h2 class="text-center">Instructions - Task 1</h2>     
+                      
+                      <!--instructions 1 row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                              <p>You are going to have access to dataset displaying the population growth for the past decades for most of countries in the euro zone (source: <a href="http://databank.worldbank.org/data/home.aspx"> World DataBank </a>). </p>
+                              <p>The data will be displayed trough a map were circles will be centered in the middle of each country. Each circle’s size is proportional to the respective country’s Population Growth %. A green circle is used for Population Growth % positive values and a yellow circle is used for Population Growth % negative values. After a brief animation showing the the Population Growth % variation trough the past years, you will be provided, at the top of the page, with a dropdown list (<img src="img/ditselectyear.PNG" alt="Select Year" align="middle" style="width:100px;height:40px;">) that will allow you to choose the year you want to explore. After selecting a year the circles in the map will be updated according with the data of the selected year.</p>
+                              <p>If you point your mouse pointer over a country’s circle you will be able to see more information regarding population statistics for the country and for the previously selected year. The following image shows extra info for Ireland that can be visualized by “mousing hover” Ireland’s circle:</p>
+                              <img src="img/ditt1i2.png" alt="Mouse Over Extra Infor" style="border:1px solid black"> 
+                              <p>I would like that you take your time exploring the dataset at your will, looking for what you find interesting. When you feel you don't want to explore the dataset any more please press this button (<img src="img/ditfintask.PNG" alt="Finish Task" align="middle" style="width:100px;height:40px;">) in order to complete the second and last part of this web experiment.</p>
+                          </div>
+                          
+                      </div>
+                      <!--instructions 1 row end-->
+
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnstarttsk1i2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit ditinst1i2 end-->
+          
+          <div id="ditinst2i1" class="ditdiv lead hidden">
                       <h2 class="text-center">Instructions - Task 2</h2>     
                       
                       <!--instructions 2 row start-->
                       <div class="row"> 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
                           
-                            <p>sdsklçsdc ld ksd k skdçds çdçdçs ççsddd h.</p>
-                            <p>sdçs  ddd  ttt kkkk kkkk kk </p>
+                              <p>You are going to have access to dataset displaying the unemployment statistics for the past years for most of countries in the euro zone (source: <a href="http://databank.worldbank.org/data/home.aspx"> World DataBank </a>). </p>
+                              <p>The data will be displayed trough a time series charts like this one:</p>
+                              <img src="img/ditt2i1.png" alt="Time series chart example" style="width:700px;border:1px solid black"> 
+                              <p> You will be provided, at the top of the page, with a dropdown list - <img src="img/ditselectcountry.PNG" alt="Select Year" align="middle" style="width:200px;"> - that will allow you to choose the country you want to explore. </p>
+                              <p>If you point your mouse pointer over a year’s red circle you will be able to see more information regarding the country’s unemployment statistics for that year. The following image shows extra info for the year 1991 that can be visualized by “mousing hover” 2010’s circle:</p>
+                              <img src="img/ditt2i1extra.png" alt="Mouse Over Extra Info" style="border:1px solid black"> 
+                              <p>In order to complete this task you will have to complete the 3 following goals using the data provided (don’t worry! You’ll have access to the goals’ description while exploring the data set):</p>
+                              <ul>
+                                <li>goal 1</li>
+                                <li>goal 1</li>
+                                <li>goal 1</li>
+                              </ul>
+                              <p>I would like that you take your time exploring the dataset in order to answer this questions. When you do please press this button (<img src="img/ditfintask.PNG" alt="Finish Task" align="middle" style="width:100px;height:40px;">) in order to move forward and a multiple choice questionnaire will be available to access your performance. Please note that if you feel you can’t find the answer to one or more of these goals you can press this button anyway since you’ll have the option of saying that you were not able to reach the goal’s answer, but I would like that you give your best!</p>
                           </div>
                           
                       </div>
@@ -414,14 +461,45 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk2i1" type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
                       <!-- buttons end-->
-          </div> <!-- dit ditinst2 end-->
+          </div> <!-- dit ditinst2i1 end-->
       
-          <div id="dittask" class="ditdiv hidden">
+          <div id="ditinst2i2" class="ditdiv lead hidden">
+                      <h2 class="text-center">Instructions - Task 2</h2>     
+                      
+                      <!--instructions 2 row start-->
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                              <p>You are going to have access to dataset displaying the unemployment statistics for the past years for most of countries in the euro zone (source: <a href="http://databank.worldbank.org/data/home.aspx"> World DataBank </a>). </p>
+                              <p>The data will be displayed trough table containing all information for each selected year. You can select a year by using the dropdown list available at the top of the page (<img src="img/ditselectyear.PNG" alt="Select Year" align="middle" style="width:100px;height:40px;">) that will allow you to choose the year you want to explore. </p>
+                              <p>In order to complete this task you will have to complete the 3 following goals using the data provided (don’t worry! You’ll have access to the goals’ description while exploring the data set):</p>
+                              <ul>
+                                <li>goal 1</li>
+                                <li>goal 1</li>
+                                <li>goal 1</li>
+                              </ul>
+                              <p>I would like that you take your time exploring the dataset in order to answer this questions. When you do please press this button (<img src="img/ditfintask.PNG" alt="Finish Task" align="middle" style="width:100px;height:40px;">) in order to move forward and a multiple choice questionnaire will be available to access your performance. Please note that if you feel you can’t find the answer to one or more of these goals you can press this button anyway since you’ll have the option of saying that you were not able to reach the goal’s answer, but I would like that you give your best!</p>
+                          </div>
+                          
+                      </div>
+                      <!--instructions 1 row end-->
+
+                      <!-- buttons start-->
+                      <div class="row"> 
+
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <button id="ditbtnstarttsk2i2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                          </div>
+                  
+                      </div>
+                      <!-- buttons end-->
+          </div> <!-- dit ditinst2i2 end-->
+          
+          <div id="dittask" class="ditdiv lead hidden">
                       <h2 class="text-center">Execute Task</h2>    
                       <!-- buttons start-->
                       <div class="row"> 
@@ -448,13 +526,13 @@
           
           <div id="ditTask1Int2" class="ditdiv hidden">
           
-                     <form class="form-inline">
-                         <fieldset class="form-group row hidden" id="ditTask1Int2Field">
+                     <form class="form-inline" class="form-group row hidden"  id="ditTask1Int2FieldGroup">
+                         <fieldset class="form-group row" id="ditTask1Int2Field">
                              <label>Select Year:</label>
                          </fieldset>
                          <button id="ditbtnendtask12" type="button" class="btn btn-primary pull-right">Finish Task</button>
-                         <fieldset><h2 id="ditTask1Int2Title"></h2></fieldset>
                      </form>
+                     <h3 id="ditTask1Int2Title">Population growth (annual %)</h2>
           
           </div> <!-- ditTask1Int2 end-->
           
@@ -462,7 +540,56 @@
           
                      <form class="form-inline">
                          <fieldset class="form-group row" id="ditTask2Int1Field">
-                             <label>Select Year:</label>
+                             <label>Select Country:</label>
+                             <select id="ditTask2Int1Opts">
+                                <option value="AND">Andorra</option>
+                                <option value="ALB">Albania</option>
+                                <option value="AUT">Austria</option>
+                                <option value="BCR">Belgium</option>
+                                <option value="BGR">Bulgaria</option>
+                                <option value="BHF">Bosnia and Herzegovina</option>
+                                <option value="BLR">Belarus</option>
+                                <option value="CHE">Switzerland</option>
+                                <option value="JEY">Jersey</option>
+                                <option value="CZE">Czech Republic</option>
+                                <option value="DEU">Germany</option>
+                                <option value="DNK">Denmark</option>
+                                <option value="ESX">Spain</option>
+                                <option value="EST">Estonia</option>
+                                <option value="FIN">Finland</option>
+                                <option value="FXX">France</option>
+                                <option value="FRO">Faroe Islands</option>
+                                <option value="ENG">United Kingdom</option>
+                                <option value="GIB">Gibraltar</option>
+                                <option value="GRC">Greece</option>
+                                <option value="HRV">Croatia</option>
+                                <option value="HUN">Hungary</option>
+                                <option value="IMN">Isle of Man</option>
+                                <option value="IRL">Ireland</option>
+                                <option value="ISL">Iceland</option>
+                                <option value="ITX">Italy</option>
+                                <option value="KOS">Kosovo</option>
+                                <option value="LIE">Liechtenstein</option>
+                                <option value="LTU">Lithuania</option>
+                                <option value="LUX">Luxembourg</option>
+                                <option value="LVA">Latvia</option>
+                                <option value="MCO">Monaco</option>
+                                <option value="MDA">Moldova</option>
+                                <option value="MKD">Macedonia</option>
+                                <option value="MNE">Montenegro</option>
+                                <option value="NLX">Netherlands</option>
+                                <option value="NOW">Norway</option>
+                                <option value="POL">Poland</option>
+                                <option value="PRX">Portugal</option>
+                                <option value="ROU">Romania</option>
+                                <option value="RUE">Russia</option>
+                                <option value="SMR">San Marino</option>
+                                <option value="SRS">Republic of Serbia</option>
+                                <option value="SVK">Slovakia</option>
+                                <option value="SVN">Slovenia</option>
+                                <option value="SWE">Sweden</option>
+                                <option value="UKR">Ukraine</option>
+                             </select>
                          </fieldset>
                          <button id="ditbtnendtask2i1" type="button" class="btn btn-primary pull-right">Finish Task</button>
                          <fieldset><h2 id="ditTask2Int1Title"></h2></fieldset>
@@ -482,7 +609,7 @@
           
           </div> <!-- ditTask2Int2 end-->
           
-          <div id="dittask1survey" class="ditdiv hidden">
+          <div id="dittask1survey" class="ditdiv lead hidden">
                       <h2 class="text-center">Task 1 Survey</h2>   
                       <!-- buttons start-->
                       <div class="row"> 
@@ -495,7 +622,7 @@
                       <!-- buttons end-->
           </div> <!-- dittask1survey end-->
 
-          <div id="dittask2survey" class="ditdiv hidden">
+          <div id="dittask2survey" class="ditdiv lead hidden">
                       <h2 class="text-center">Task 2 Survey</h2>   
                       <!-- buttons start-->
                       <div class="row"> 
@@ -508,7 +635,7 @@
                       <!-- buttons end-->
           </div> <!-- dittask2survey end-->
           
-          <div id="ditselfmwl" class="ditdiv hidden">
+          <div id="ditselfmwl" class="ditdiv lead hidden">
                       
                       <!--bye message row start-->
                       <div class="row"> 
@@ -614,7 +741,7 @@
                       
           </div> <!-- ditselfmwl end-->
 
-          <div id="ditthanksbye" class="ditdiv hidden">
+          <div id="ditthanksbye" class="ditdiv lead hidden">
                       <h1 class="text-center">Thank you!</h1>     
                       
                     <!--bye message row start-->
@@ -670,8 +797,10 @@
         $(document).ready(function() {
             $('#ditbtntask1').on("click", function(){ditPrepareTask(1);});
             $('#ditbtntask2').on("click", function(){ditPrepareTask(2);});
-            $('#ditbtnstarttsk1').on("click", ditStartTask);
-            $('#ditbtnstarttsk2').on("click", ditStartTask);
+            $('#ditbtnstarttsk1i1').on("click", ditStartTask);
+            $('#ditbtnstarttsk1i2').on("click", ditStartTask);
+            $('#ditbtnstarttsk2i1').on("click", ditStartTask);
+            $('#ditbtnstarttsk2i2').on("click", ditStartTask);
             //$('#ditTask').on("click", ditEndTask);
             $('#ditbtnendtask1i1').on("click", ditEndTask);
             $('#ditbtnendtask1i2').on("click", ditEndTask);

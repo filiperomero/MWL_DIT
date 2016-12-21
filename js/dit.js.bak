@@ -141,23 +141,6 @@ dit.persist = (function() {
     
   }
   
-  module.sendTask1Survey = function(dataArr) {
-    if (dit.isDebugging()) {console.log("persist send Task1 survey to server");}
-    if (dit.isDebugging()) {console.log(dataArr);}
-      
-    var posting = jQuery.ajax({
-        type: "POST",
-        url:  "php/persist_sendTask1Survey.php",
-        data: dataArr, 
-        success:function(data) {
-          if (dit.isDebugging()) {console.log("sendTask1Survey service success");}
-          if (dit.isDebugging()) {console.log(data);}
-        }
-    });
-    
-    return posting;
-  }
-  
   module.startDate = function(data) {
       
     if (dit.isDebugging()) {console.log("persist startDate to the server");}

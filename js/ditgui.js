@@ -73,6 +73,7 @@ function ditShowDiv(ditDiv) {
         //console.log(ditDivDids[i] +"/"+hide);
         d3.selectAll(ditDivDids[i]).classed("hidden", hide);
     }
+    window.scrollTo(0, 0);
 
 }
 
@@ -85,19 +86,15 @@ function ditShowInstructions() {
     
     if (dit.task == 1 && dit.interface == 1) {
         ditShowDiv("#ditinst1i1");
-        ditShowTask1Int1();
     }
     else if (dit.task == 1 && dit.interface == 2) {
         ditShowDiv("#ditinst1i2");
-        ditShowTask1Int2();
     }
     else if (dit.task == 2 && dit.interface == 1) {
         ditShowDiv("#ditinst2i1");
-        ditShowTask2Int1();
     }
     else if (dit.task == 2 && dit.interface == 2) {
         ditShowDiv("#ditinst2i2");
-        ditShowTask2Int2();
     }
 }
 
@@ -360,7 +357,7 @@ function ditShowTask1Int1() {
 
         }
         
-        //update(ditFirstYear);
+        update("1967");
         
     };
 
@@ -819,6 +816,31 @@ function ditPrepareTask(task) {
     console.log("ditPrepareTask");
     dit.task = task;
     ditShowDiv("#ditsurvey");
+}
+
+function ditSubmitPostSurvey(e, formID) {
+    console.log("ditSubmitPostSurvey");
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var formData = $(formID).serializeArray();
+    
+    // check if all data was filled
+    if (dit.task == 1 && formData.length === 1) {
+        // all data was filled, send to server
+        var data = $(formID).serialize();
+        var postResponse;
+        if (dit.task == 1) {
+            postResponse = dit.persist.sendTask1Survey(data);
+        }
+        postResponse.done(function(data) {
+            console.log("postResponse.done");
+            console.log(data);
+        });
+    } else {
+       console.log("form not filled or completed");
+    }
+    
+    ditStartSelfMWL();
 }
 
 function ditStartSelfMWL() {
