@@ -248,7 +248,7 @@ function ditShowTask1Int1() {
                             ;
                 
             d3.select("#ditTask1Int1Title")
-                .text("Total Population " + year);
+                .text("Population growth (annual %) - " + year);
                 
             var groups = barSvg.append("g").attr("class", "labels")
                         .selectAll("text")
