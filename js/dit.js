@@ -141,16 +141,25 @@ dit.persist = (function() {
     
   }
   
-  module.sendTask1Survey = function(dataArr) {
-    if (dit.isDebugging()) {console.log("persist send Task1 survey to server");}
+  module.sendTaskSurvey = function(taskNbr, dataArr) {
+    if (dit.isDebugging()) {console.log("persist send Task" + taskNbr + " survey to server");}
     if (dit.isDebugging()) {console.log(dataArr);}
       
+    var url = "php/";
+    if(taskNbr == 1) {
+        url = url + "persist_sendTask1Survey.php";
+    } else if (taskNbr == 2) {
+        url = url + "persist_sendTask2Survey.php";
+    } else {
+        return "task number not recognized";
+    }
+    
     var posting = jQuery.ajax({
         type: "POST",
-        url:  "php/persist_sendTask1Survey.php",
+        url:  url,
         data: dataArr, 
         success:function(data) {
-          if (dit.isDebugging()) {console.log("sendTask1Survey service success");}
+          if (dit.isDebugging()) {console.log("sendTaskSurvey service success");}
           if (dit.isDebugging()) {console.log(data);}
         }
     });

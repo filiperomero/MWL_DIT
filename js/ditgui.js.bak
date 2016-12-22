@@ -73,6 +73,7 @@ function ditShowDiv(ditDiv) {
         //console.log(ditDivDids[i] +"/"+hide);
         d3.selectAll(ditDivDids[i]).classed("hidden", hide);
     }
+    window.scrollTo(0, 0);
 
 }
 
@@ -85,19 +86,15 @@ function ditShowInstructions() {
     
     if (dit.task == 1 && dit.interface == 1) {
         ditShowDiv("#ditinst1i1");
-        ditShowTask1Int1();
     }
     else if (dit.task == 1 && dit.interface == 2) {
         ditShowDiv("#ditinst1i2");
-        ditShowTask1Int2();
     }
     else if (dit.task == 2 && dit.interface == 1) {
         ditShowDiv("#ditinst2i1");
-        ditShowTask2Int1();
     }
     else if (dit.task == 2 && dit.interface == 2) {
         ditShowDiv("#ditinst2i2");
-        ditShowTask2Int2();
     }
 }
 
@@ -251,7 +248,7 @@ function ditShowTask1Int1() {
                             ;
                 
             d3.select("#ditTask1Int1Title")
-                .text("Total Population " + year);
+                .text("Population growth (annual %) - " + year);
                 
             var groups = barSvg.append("g").attr("class", "labels")
                         .selectAll("text")
@@ -360,7 +357,7 @@ function ditShowTask1Int1() {
 
         }
         
-        //update(ditFirstYear);
+        update("1967");
         
     };
 
@@ -458,7 +455,7 @@ function ditShowTask1Int2() {
             
             var radius = d3.scale.sqrt()
                            .domain([0, population_max])
-                           .range([0, 15]);
+                           .range([0, 20]);
 
             function key_func(d) {
                 return d[ditDataYear];
@@ -492,8 +489,10 @@ function ditShowTask1Int2() {
                  .attr("transform", function(d) {return "translate(" + country_centers[d[ditDataCode]] + ")";})
                  .attr('r', function(d) {return radius(Math.abs(+d[ditCriteria]));})
                  .style('fill', function(d) { if (+d[ditCriteria] < 0) {return 'Yellow';} return 'Green';})
+                 .style('stroke','black')
+                 .style('stroke-width','0.5')
                  .on("mouseover", function(d,i) {
-                      d3.select(this).style({'stroke-opacity':1,'stroke':'brown'});
+                      d3.select(this).style({'stroke-opacity':1,'stroke':'brown','stroke-width':0.5})
                       tooltip.classed("hidden", false);
                       ditCountrynameTtip.text(ditDataName + ": " + d[ditDataName]);
                       ditYearTtip.text(ditDataYear + ": " + d[ditDataYear]);
@@ -507,7 +506,8 @@ function ditShowTask1Int2() {
                       ditDataPopLifeExpectTtip.text(ditDataPopLifeExpect + ": " + ditCkeckNum(d[ditDataPopLifeExpect]));
                  })
                  .on("mouseout", function(d) {
-                    d3.select(this).style({'stroke':'none'});
+                    //d3.select(this).style({'stroke':'none'});
+                    d3.select(this).style({'stroke':'black'});
                     tooltip.classed("hidden", true);
                  });
           };
@@ -629,6 +629,8 @@ function ditShowTask2Int1() {
                       key = this[this.selectedIndex].value;
                       dimpleDoIt(key);
               });
+              
+              dimpleDoIt("ALB");
            
     };
                                 
@@ -732,6 +734,13 @@ function ditShowTask2Int2() {
                 }
                 return y;
             });
+            
+            // order by country
+            filtered.sort(function(a,b) {
+                 var compA = a[ditDataName].toUpperCase();
+                 var compB = b[ditDataName].toUpperCase();
+                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+            });
 
             // create a row for each object in the data
             var rows = tbody.selectAll("tr")
@@ -819,6 +828,31 @@ function ditPrepareTask(task) {
     console.log("ditPrepareTask");
     dit.task = task;
     ditShowDiv("#ditsurvey");
+}
+
+function ditSubmitPostSurvey(e, formID) {
+    console.log("ditSubmitPostSurvey");
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var formData = $(formID).serializeArray();
+    
+    // check if all data was filled
+    if (dit.task == 1 && formData.length === 1) {
+        // all data was filled, send to server
+        var data = $(formID).serialize();
+        var postResponse;
+        if (dit.task == 1) {
+            postResponse = dit.persist.sendTask1Survey(data);
+        }
+        postResponse.done(function(data) {
+            console.log("postResponse.done");
+            console.log(data);
+        });
+    } else {
+       console.log("form not filled or completed");
+    }
+    
+    ditStartSelfMWL();
 }
 
 function ditStartSelfMWL() {

@@ -412,7 +412,7 @@
                       <div class="row"> 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
                               <p>You are going to have access to dataset displaying the population growth for the past decades for most of territories in the euro zone (source: <a href="http://databank.worldbank.org/data/home.aspx"> World DataBank </a>). </p>
-                              <p>The data will be displayed trough a map were circles will be centered in the middle of each territory. Each circle’s size is proportional to the respective territory’s Population Growth %. A green circle is used for Population Growth % positive values and a yellow circle is used for Population Growth % negative values. If a territory doesn't have a circle for a spcific year it means that the Population Growth % was near 0%. After a brief animation showing the the Population Growth % variation trough the past years, you will be provided, at the top of the page, with a dropdown list (<img src="img/ditselectyear.png" alt="Select Year" align="middle" style="width:200px">) that will allow you to choose the year you want to explore. After selecting a year the circles in the map will be updated according with the data of the selected year.</p>
+                              <p>The data will be displayed through a map were circles will be centered in the middle of each territory. Each circle’s size is proportional to the respective territory’s Population Growth %. A green circle is used for Population Growth % positive values and a yellow circle is used for Population Growth % negative values. If a territory doesn't have a circle for a specific year it means that the Population Growth % was near 0%. After a brief animation showing the Population Growth % variation through the past years, you will be provided, at the top of the page, with a dropdown list (<img src="img/ditselectyear.png" alt="Select Year" align="middle" style="width:200px">) that will allow you to choose the year you want to explore. After selecting a year the circles in the map will be updated according with the data of the selected year.</p>
                               <p>If you point your mouse pointer over a territory’s circle you will be able to see more information regarding population statistics for the territory and for the previously selected year. The following image shows extra info for Ireland that can be visualized by “mousing hover” Ireland’s circle:</p>
                               <img src="img/ditt1i2.png" alt="Mouse Over Extra Infor" style="border:1px solid black"> 
                               <p>I would like that you take your time exploring the dataset at your will, looking for what you find interesting. When you feel you don't want to explore the dataset any more please press this button (<img src="img/ditfintask.png" alt="Finish Task" align="middle" style="width:100px;height:40px;">) in order to complete the second and last part of this web experiment.</p>
@@ -632,11 +632,10 @@
                                 <div class="form-check">
                                     <div class="help-block with-errors"></div>
                                     <textarea name="dit-task1-survey" class="form-control" rows="10" maxlength="4000"required></textarea>
-                                    <font size="2">(Maximum characters: 4000)<br>
+                                    <font size="2">(Maximum characters: 4000)</font><br/>
                           </div>
                             </fieldset>
                             <button id="ditbtnsrvtask1" type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
-                            <!--<button id="ditbtnsrvtask1" type="button" class="btn btn-primary  pull-right">Next</button>-->
                       </div>
                     </form>
                 </div>
@@ -646,16 +645,61 @@
           </div> <!-- dittask1survey end-->
 
           <div id="dittask2survey" class="ditdiv lead hidden">
-                      <h2 class="text-center">Task 2 Survey</h2>   
-                      <!-- buttons start-->
+            <h2>Please answer the following questions regarding the task you have just performed</h2>
+            </br>
+            <!--survey row start-->
                       <div class="row"> 
-
-                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnsrvtask2" type="button" class="btn btn-primary  pull-right">Next</button>
+                <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
+                    <form id="ditformsrvtask2" data-toggle="validator" role="form">
+                        <fieldset class="form-group row">
+                            <legend><h3>Goal 1</h3>Knowing the Scandinavia contains the following 6 territories: Denmark; Norway; Sweden; Finland; and Iceland. Please find out which of these territories had a bigger <strong><i>Long-term unemployment (% of total unemployment)</i></strong> variation between 2012 and 2013 and how much was that variation (absolute value).
+                            </legend>
+                            <div class="form-check" id="ditTask2Question1">
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question1" id="Q1O1" value="opt1" required> Iceland (variation 2.5)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question1" id="Q1O2" value="opt2" required> Denmark (variation 2.5)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question1" id="Q1O3" value="opt3" required> Sweden (variation 1.5)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question1" id="Q1O4" value="opt4" required> Iceland (variation 5.2)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question1" id="Q1O5" value="opt5" required> I wasn't able to find the answer
+                                </label>
+                                <div class="help-block with-errors"></div>
                           </div>
-                  
+                        </fieldset>
+                        <fieldset class="form-group row">
+                            <legend><h3>Goal 2</h3>Consider the following Southern Europe countries: Portugal; Spain; Italy; and Greece. Which one had the biggest <strong><i>Unemployment, female (% of female labor force)</i></strong>  in 2014? For that country, the <strong><i>Unemployment, youth total (% of total labor force ages 15-24)</i></strong>  increased or decreased between 2012 and 2013?
+                            </legend>
+                            <div class="form-check" id="ditTask2Question2">
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question2" id="Q2O1" value="opt1" required> Portugal (Mantained)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question2" id="Q2O2" value="opt2" required> Greece (Increased)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question2" id="Q2O3" value="opt3" required> Greece (Decreased)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question2" id="Q2O4" value="opt4" required> Portugal (Increased)
+                                </label>
+                                <label class="form-check-label dit-radio control-label">
+                                    <input class="form-check-input" type="radio" name="Question2" id="Q2O5" value="opt5" required> I wasn't able to find the answer
+                                </label>
+                                <div class="help-block with-errors"></div>
                       </div>
-                      <!-- buttons end-->
+                        </fieldset>
+                        <button id="ditbtnsrvtask2" type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
+                    </form>
+                </div>
+            </div>
+            <!--survey row end-->
           </div> <!-- dittask2survey end-->
           
           <div id="ditselfmwl" class="ditdiv lead hidden">
@@ -797,8 +841,6 @@
     </div> <!--main end-->
   </div> <!--container end-->
   
-  
-  
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- Bootstrap - latest compiled and minified JavaScript -->
@@ -811,6 +853,8 @@
   <script src="//d3js.org/topojson.v1.min.js"></script>
   <!--Dimple - latest compiled and minified JavaScript -->
   <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  <!-- Spin.js -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js'></script>
   <!-- DIT js - core functionality logic -->
   <script src="js/dit.js"></script>
   <!-- DIT GUI js - gui actions and mixed use of the other libraries -->
@@ -829,9 +873,10 @@
             $('#ditbtnendtask1i2').on("click", ditEndTask);
             $('#ditbtnendtask2i1').on("click", ditEndTask);
             $('#ditbtnendtask2i2').on("click", ditEndTask);
-            $('#ditbtnsrvtask1').on("click", ditStartSelfMWL);
+            //$('#ditbtnsrvtask1').on("click", ditStartSelfMWL);
             $('#ditformsrvtask1').submit(function(e){ditSubmitPostSurvey(e,'#ditformsrvtask1');});
-            $('#ditbtnsrvtask2').on("click", ditStartSelfMWL);
+            $('#ditformsrvtask2').submit(function(e){ditSubmitPostSurvey(e,'#ditformsrvtask2');});
+            //$('#ditbtnsrvtask2').on("click", ditStartSelfMWL);
             //$('#ditbtnselfmwl').on("click", ditBye);
             $('#ditformselfmwl').submit(function(e){ditBye(e);});
             $('#ditformprequest').submit(function(e){ditInitTask(e);});

@@ -52,6 +52,18 @@ ditDataUnWithTertEduF ,
 ditDataUnF            
 ];
  
+// loader settings
+var opts = {
+  lines: 9, // The number of lines to draw
+  length: 9, // The length of each line
+  width: 5, // The line thickness
+  radius: 14, // The radius of the inner circle
+  color: '#EE3124', // #rgb or #rrggbb or array of colors
+  speed: 1.9, // Rounds per second
+  trail: 40, // Afterglow percentage
+  className: 'spinner', // The CSS class to assign to the spinner
+};
+
 // get Ids for all divs
 var ditDivDids = [];
                  /*["#ditwelcome", "#ditsurvey", "#ditinst1", "#ditinst2", "#ditTask1Int1", "#ditTask1Int2",
@@ -361,7 +373,33 @@ function ditShowTask1Int1() {
         
     };
 
-    d3.tsv(ditDataSource, drawTask1Int1);
+    //d3.tsv(ditDataSource, drawTask1Int1);
+    
+    // callback function wrapped for loader in 'init' function
+    function init() {
+
+        var target = document.getElementById('ditTask1Int1');
+        
+        // trigger loader
+        var spinner = new Spinner(opts).spin(target);
+
+        // slow the json load intentionally, so we can see it every load
+        setTimeout(function() {
+
+            // load json data and trigger callback
+            d3.tsv(ditDataSource, function(data) {
+
+                // stop spin.js loader
+                spinner.stop();
+
+                // instantiate chart within callback
+                drawTask1Int1(data);
+
+            });
+        }, 1500);
+    } 
+
+    init();
 }
 
 function ditShowTask1Int2() {
@@ -550,21 +588,46 @@ function ditShowTask1Int2() {
  
     };
 
-    d3.json(ditMapData, function(error, europe) {
+    /*d3.json(ditMapData, function(error, europe) {
                               if (error) return console.error(error);
                               draw(europe);
+                        });*/
+    // callback function wrapped for loader in 'init' function
+    function init() {
+
+        var target = document.getElementById('ditTask1Int2');
+        
+        // trigger loader
+        var spinner = new Spinner(opts).spin(target);
+
+        // slow the json load intentionally, so we can see it every load
+        setTimeout(function() {
+
+            // load json data and trigger callback
+            d3.json(ditMapData, function(error, data) {
+                
+                if (error) return console.error(error);
+                              
+                // stop spin.js loader
+                spinner.stop();
+                
+                // instantiate map within callback
+                draw(data);
                         });
+        }, 1500);
+    } 
     
+    init();
 }
 
 function ditShowTask2Int1() {
     console.log("ditShowTask2Int1");
     
-    
     function draw(europe) {
             var margin = 75,
                 width = 1200 - margin,
                 height = 600 - margin;
+            
             var svg = d3.select("body")
                       .append("svg")
                         .attr("width", width + margin)
@@ -590,7 +653,6 @@ function ditShowTask2Int1() {
                       if (filtered.length === 0) {
                           alert("There is no data recorded for the selected country");
                       } else {
-                         
                           filtered = filtered.map(function(x) {
                               var y = x;
                               for (i=0;i<ditDataUnArr.length;i++) {
@@ -618,7 +680,6 @@ function ditShowTask2Int1() {
                           myChart.addSeries(extraInfo, dimple.plot.scatter);
                           
                           //console.table(filtered);
-                          
                           myChart.draw();
                       }
                       
@@ -634,7 +695,33 @@ function ditShowTask2Int1() {
            
     };
                                 
-    d3.tsv(ditDataSource, draw);
+    //d3.tsv(ditDataSource, draw);
+    
+    // callback function wrapped for loader in 'init' function
+    function init() {
+
+        var target = document.getElementById('ditTask2Int1');
+        
+        // trigger loader
+        var spinner = new Spinner(opts).spin(target);
+
+        // slow the json load intentionally, so we can see it every load
+        setTimeout(function() {
+
+            // load json data and trigger callback
+            d3.tsv(ditDataSource, function(data) {
+
+                // stop spin.js loader
+                spinner.stop();
+
+                // instantiate chart within callback
+                draw(data);
+
+            });
+        }, 1500);
+    } 
+
+    init();
     
 }
 
@@ -767,10 +854,35 @@ function ditShowTask2Int2() {
     };
     
     /* Use D3 to load the data file */
-    d3.tsv(ditDataSource, function(error, data) {
+    /*d3.tsv(ditDataSource, function(error, data) {
         if (error) return console.error(error);
         tabulate(data);
+    });*/
+    // callback function wrapped for loader in 'init' function
+    function init() {
+
+        var target = document.getElementById('ditTask2Int2');
+        
+        // trigger loader
+        var spinner = new Spinner(opts).spin(target);
+
+        // slow the json load intentionally, so we can see it every load
+        setTimeout(function() {
+
+            // load json data and trigger callback
+    d3.tsv(ditDataSource, function(error, data) {
+        if (error) return console.error(error);
+                
+                // stop spin.js loader
+                spinner.stop();
+
+                // instantiate table within callback
+        tabulate(data);
     });
+        }, 1500);
+    } 
+
+    init();
 }
 
 function ditEndTask() {
@@ -837,13 +949,11 @@ function ditSubmitPostSurvey(e, formID) {
     var formData = $(formID).serializeArray();
     
     // check if all data was filled
-    if (dit.task == 1 && formData.length === 1) {
+    if ((dit.task == 1 && formData.length === 1) || (dit.task == 2 && formData.length === 2)) {
         // all data was filled, send to server
         var data = $(formID).serialize();
         var postResponse;
-        if (dit.task == 1) {
-            postResponse = dit.persist.sendTask1Survey(data);
-        }
+        postResponse = dit.persist.sendTaskSurvey(dit.task, data);
         postResponse.done(function(data) {
             console.log("postResponse.done");
             console.log(data);

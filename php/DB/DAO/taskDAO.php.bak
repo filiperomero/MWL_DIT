@@ -109,5 +109,18 @@ class taskDAO {
         return "done!!!";
     }
     
+    public function updateTask1Survey($parametersArray, $id) {
+        // Update assumes that all the required parameters are defined and set
+        $sql = "UPDATE task  ";
+        $sql .= " SET task1_survey = ? ";
+        $sql .= " WHERE id = ? ";
+        
+        $stmt = $this->dbManager->prepareQuery ( $sql );
+        $this->dbManager->bindValue ( $stmt, 1, $parametersArray ["task1survey"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 2, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->executeQuery ( $stmt );
+
+        return "done!!!";
+    }
 }
 ?>
