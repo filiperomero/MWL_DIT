@@ -628,7 +628,7 @@ function ditShowTask2Int1() {
                 width = 1200 - margin,
                 height = 600 - margin;
             
-            var svg = d3.select("body")
+            var svg = d3.select("#ditTask2Int1")
                       .append("svg")
                         .attr("width", width + margin)
                         .attr("height", height + margin);
