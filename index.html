@@ -18,6 +18,10 @@
   <!-- Bootstrap - Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   
+  <!-- font-awesome -->
+  <link rel='stylesheet prefetch' href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <!-- bespoke css -->
   <link rel="stylesheet" href="css/style.css">
   
 </head>
@@ -77,8 +81,8 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtntask1" type="button" class="btn btn-primary btn-lg">Start Task 1</button>
-                            <button id="ditbtntask2" type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
+                            <button id="ditbtntask1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg">Start Task 1</button>
+                            <button id="ditbtntask2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
                           </div>
                   
                       </div>
@@ -369,7 +373,7 @@
                                       </fieldset>
                                       
                                       <div class="form-group">
-                                         <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnsrv">Next</button>
+                                         <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnsrv" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing...">Next</button>
                                       </div>
                                 </form>
                   </div>
@@ -399,7 +403,7 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk1i1" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk1i1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
@@ -426,7 +430,7 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk1i2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk1i2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
@@ -462,7 +466,7 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk2i1" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk2i1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
@@ -493,7 +497,7 @@
                       <div class="row"> 
 
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtnstarttsk2i2" type="button" class="btn btn-primary  pull-right">Start Task</button>
+                            <button id="ditbtnstarttsk2i2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary  pull-right">Start Task</button>
                           </div>
                   
                       </div>
@@ -519,7 +523,7 @@
                          <fieldset class="form-group row" id="ditTask1Int1Field">
                              <label>Select Year:</label>
                          </fieldset>
-                         <button id="ditbtnendtask1i1" type="button" class="btn btn-primary pull-right">Finish Task</button>
+                         <button id="ditbtnendtask1i1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary pull-right">Finish Task</button>
                          <fieldset><h2 id="ditTask1Int1Title"></h2></fieldset>
                      </form>
           
@@ -531,7 +535,7 @@
                          <fieldset class="form-group row" id="ditTask1Int2Field">
                              <label>Select Year:</label>
                          </fieldset>
-                         <button id="ditbtnendtask1i2" type="button" class="btn btn-primary pull-right">Finish Task</button>
+                         <button id="ditbtnendtask1i2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary pull-right">Finish Task</button>
                      </form>
                      <h3 id="ditTask1Int2Title">Population growth (annual %)</h2>
           
@@ -599,7 +603,7 @@
                                 <option value="ENG">United Kingdom</option>
                              </select>
                          </fieldset>
-                         <button id="ditbtnendtask2i1" type="button" class="btn btn-primary pull-right">Finish Task</button>
+                         <button id="ditbtnendtask2i1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary pull-right">Finish Task</button>
                          <fieldset><h2 id="ditTask2Int1Title"></h2></fieldset>
                      </form>
           
@@ -618,7 +622,7 @@
                          <fieldset class="form-group row" id="ditTask2Int2Field">
                              <label>Select Year:</label>
                          </fieldset>
-                         <button id="ditbtnendtask2i2" type="button" class="btn btn-primary pull-right">Finish Task</button>
+                         <button id="ditbtnendtask2i2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary pull-right">Finish Task</button>
                          <fieldset><h2 id="ditTask2Int2Title"></h2></fieldset>
                      </form>
           
@@ -638,7 +642,7 @@
                                     <font size="2">(Maximum characters: 4000)</font><br/>
                           </div>
                             </fieldset>
-                            <button id="ditbtnsrvtask1" type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
+                            <button id="ditbtnsrvtask1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
                       </div>
                     </form>
                 </div>
@@ -698,7 +702,7 @@
                                 <div class="help-block with-errors"></div>
                       </div>
                         </fieldset>
-                        <button id="ditbtnsrvtask2" type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
+                        <button id="ditbtnsrvtask2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
                     </form>
                 </div>
             </div>
@@ -722,7 +726,6 @@
                                 <fieldset class="form-group row">
                                         <legend><strong>1. Mental Demand</strong> - How much mental and perceptual activity was required (e.g., thinking, deciding, calculating, remembering, looking, searching, etc.)? Was the task easy or demanding, simple or complex, exacting or forgiving?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-mental" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-mental" value="low" required><label>Low</label></li>
@@ -730,13 +733,13 @@
                                               <li><input type="radio" name="dit-mwl-mental" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-mental" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
                                         <legend><strong>2. Physical Demand</strong> - How much physical activity was required (e.g., pushing, pulling, turning, controlling, activating, etc.)? Was the task easy or demanding, slow or brisk, slack or strenuous, restful or laborious?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-physical" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-physical" value="low" required><label>Low</label></li>
@@ -744,13 +747,13 @@
                                               <li><input type="radio" name="dit-mwl-physical" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-physical" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
                                         <legend><strong>3. Temporal Demand </strong> - How much time pressure did you feel due to the rate or pace at which the tasks or task elements occurred? Was the pace slow and leisurely or rapid and frantic?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-temporal" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-temporal" value="low" required><label>Low</label></li>
@@ -758,13 +761,13 @@
                                               <li><input type="radio" name="dit-mwl-temporal" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-temporal" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
                                         <legend><strong>4. Performance </strong> - How successful do you think you were in accomplishing the goals of the task? How satisfied were you with your performance in accomplishing these goals?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-performance" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-performance" value="low" required><label>Low</label></li>
@@ -772,13 +775,13 @@
                                               <li><input type="radio" name="dit-mwl-performance" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-performance" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
                                         <legend><strong>5. Effort </strong> - How hard did you have to work (mentally and physically) to accomplish your level of performance?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-effort" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-effort" value="low" required><label>Low</label></li>
@@ -786,13 +789,13 @@
                                               <li><input type="radio" name="dit-mwl-effort" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-effort" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
                                         <legend><strong>6. Frustration </strong> - How insecure, discouraged, irritated, stressed and annoyed versus secure, gratified, content, relaxed and complacent did you feel during the task?</legend>
                                         <div class="form-check">
-                                            <div class="help-block with-errors"></div>
                                             <ul class='dit-likert'>
                                               <li><input type="radio" name="dit-mwl-frustration" value="very_low" required><label>Very Low</label></li>
                                               <li><input type="radio" name="dit-mwl-frustration" value="low" required><label>Low</label></li>
@@ -800,11 +803,12 @@
                                               <li><input type="radio" name="dit-mwl-frustration" value="high" required><label>High</label></li>
                                               <li><input type="radio" name="dit-mwl-frustration" value="very_high" required><label>Very High</label></li>
                                             </ul>
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnselfmwl">Next</button>
+                                    <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnselfmwl" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing...">Next</button>
                                 </div>
                             </form>
                       </div> 
@@ -833,7 +837,7 @@
                                     </div>
                                   
                                     <div class="form-group">
-                                       <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnend">Home</button>
+                                       <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnend" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing...">Home</button>
                                     </div>
                               </form>
                           </div>

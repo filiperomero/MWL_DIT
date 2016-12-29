@@ -113,6 +113,11 @@ function ditShowInstructions() {
 function ditStartTask() {
     console.log("ditStartTask");
     
+    $('#ditbtnstarttsk1i1').button('loading');
+    $('#ditbtnstarttsk1i2').button('loading');
+    $('#ditbtnstarttsk2i1').button('loading');
+    $('#ditbtnstarttsk2i2').button('loading');
+    
     // store start date
     var postResponse = dit.persist.startDate();
     postResponse.done(function(data) {
@@ -888,6 +893,11 @@ function ditShowTask2Int2() {
 function ditEndTask() {
     console.log("ditEndTask");
     
+    $('#ditbtnendtask1i1').button('loading');
+    $('#ditbtnendtask1i2').button('loading');
+    $('#ditbtnendtask2i1').button('loading');
+    $('#ditbtnendtask2i2').button('loading');
+    
     // stop collecting user activity    
     dit.tracker.stop();
     
@@ -913,6 +923,7 @@ function ditInitTask(e) {
     
     e.preventDefault(); // avoid to execute the actual submit of the form.
     
+    $('#ditbtnsrv').button('loading');
     // console.log("start task 1");
     
     var formData = $('#ditformprequest').serializeArray();
@@ -931,13 +942,16 @@ function ditInitTask(e) {
             
         });        
     } else {
-       console.log("not filled");
+       console.log(" ditformprequest not filled");
+       $('#ditbtnsrv').button('reset');
     }
    
 }
 
 function ditPrepareTask(task) {
     console.log("ditPrepareTask");
+    $('#ditbtntask1').button('loading');
+    $('#ditbtntask2').button('loading');
     dit.task = task;
     ditShowDiv("#ditsurvey");
 }
@@ -945,11 +959,14 @@ function ditPrepareTask(task) {
 function ditSubmitPostSurvey(e, formID) {
     console.log("ditSubmitPostSurvey");
     e.preventDefault(); // avoid to execute the actual submit of the form.
+    
+    $('#ditbtnsrvtask1').button('loading');
+    $('#ditbtnsrvtask2').button('loading');
 
     var formData = $(formID).serializeArray();
-    
+   
     // check if all data was filled
-    if ((dit.task == 1 && formData.length === 1) || (dit.task == 2 && formData.length === 2)) {
+    if ((dit.task == 1 && formData.length === 1 && formData[0].value !== "") || (dit.task == 2 && formData.length === 2)) {
         // all data was filled, send to server
         var data = $(formID).serialize();
         var postResponse;
@@ -957,12 +974,13 @@ function ditSubmitPostSurvey(e, formID) {
         postResponse.done(function(data) {
             console.log("postResponse.done");
             console.log(data);
+            ditStartSelfMWL();
         });
     } else {
-       console.log("form not filled or completed");
+       console.log(formID + "form not filled or completed");
+       $('#ditbtnsrvtask1').button('reset');
+       $('#ditbtnsrvtask2').button('reset');
     }
-    
-    ditStartSelfMWL();
 }
 
 function ditStartSelfMWL() {
@@ -973,6 +991,8 @@ function ditStartSelfMWL() {
 function ditBye(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
     console.log("ditBye");
+    
+    $('#ditbtnselfmwl').button('loading');
     
     var formData = $('#ditformselfmwl').serializeArray();
     
@@ -989,26 +1009,31 @@ function ditBye(e) {
             
         });        
     } else {
-       console.log("not filled");
+       console.log("ditformselfmwl not filled");
+       $('#ditbtnselfmwl').button('reset');
     }
 }
 
 function ditFinish(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
     console.log("ditFinish");
+    $('#ditbtnend').button('loading');
 
     var formData = $('#ditformend').serializeArray();
-    console.log(formData);
+    
+    //console.log(formData);
+    
     if (formData[0].value !== ""){
         var postResponse = dit.persist.email($('#ditformend').serialize());
         
-        /*
         postResponse.done(function(data) {
-            console.log(" dit.persist.email postResponse.done");
-            console.log(data);
+            //console.log(" dit.persist.email postResponse.done");
+            //console.log(data);
+            window.location.replace("http://filipe.lucalongo.eu/");
         }); 
-        */        
+    } else {
+        window.location.replace("http://filipe.lucalongo.eu/");
     }
     
-    window.location.replace("http://filipe.lucalongo.eu/");
+    
 }
