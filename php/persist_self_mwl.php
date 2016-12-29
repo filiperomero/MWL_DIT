@@ -9,7 +9,7 @@ $dbmanager   = new pdoDbManager ();
 $taskDAO  = new taskDAO ( $dbmanager );
 $dbmanager->openConnection();
 
-$paramArr = []; 
+$paramArr = array();
 
 $paramArr["mwl_mental"]      = htmlspecialchars($_POST['dit-mwl-mental']);
 $paramArr["mwl_physical"]    = htmlspecialchars($_POST['dit-mwl-physical']);

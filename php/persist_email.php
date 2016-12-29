@@ -11,7 +11,7 @@ $dbmanager->openConnection();
 
  //$decBody = json_decode( $body, true ); 
 
-$paramArr = []; 
+$paramArr = array();
 
 $paramArr["email"] = htmlspecialchars($_POST['email']);
 

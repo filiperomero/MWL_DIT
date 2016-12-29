@@ -9,7 +9,7 @@ $dbmanager   = new pdoDbManager ();
 $taskDAO  = new taskDAO ( $dbmanager );
 $dbmanager->openConnection();
 
-$paramArr = []; 
+$paramArr = array();
 
 $paramArr["task2Q1"] = htmlspecialchars($_POST['Question1']);
 $paramArr["task2Q2"] = htmlspecialchars($_POST['Question2']);

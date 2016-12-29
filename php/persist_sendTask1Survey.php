@@ -9,7 +9,7 @@ $dbmanager   = new pdoDbManager ();
 $taskDAO  = new taskDAO ( $dbmanager );
 $dbmanager->openConnection();
 
-$paramArr = []; 
+$paramArr = array();
 
 $paramArr["task1survey"] = htmlspecialchars($_POST['dit-task1-survey']);
 
