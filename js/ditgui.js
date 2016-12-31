@@ -578,7 +578,9 @@ function ditShowTask1Int2() {
                         .append("option")
                         .text(function(d) {return d;})
                         .attr("value", function(d) {return d;});
-                  
+                    
+                    $('#ditOptions').val(ditFirstYear);
+                    
                     d3.select('#ditOptions')
                         .on("change", function(d) {
                             key = this[this.selectedIndex].value;
