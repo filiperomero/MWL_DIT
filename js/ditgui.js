@@ -1031,10 +1031,12 @@ function ditFinish(e) {
         postResponse.done(function(data) {
             //console.log(" dit.persist.email postResponse.done");
             //console.log(data);
-            window.location.replace("http://filipe.lucalongo.eu/");
+            //window.location.replace("http://filipe.lucalongo.eu/");
+            window.location.href = "index.html";
         }); 
     } else {
-        window.location.replace("http://filipe.lucalongo.eu/");
+        //window.location.replace("http://filipe.lucalongo.eu/");
+        window.location.href = "index.html";
     }
     
     
