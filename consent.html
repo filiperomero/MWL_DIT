@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- theme info -->
+  <meta name="description" content="Master's Thesis - Experiment">
+  <meta name="author" content="Filipe Romero">
+  <!-- site title -->
+  <title>DIT | Dublin Institute of Technology</title>
+  <!-- favicons -->
+  <link rel="shortcut icon" href="./img/logo.gif">
+  <link rel="icon" sizes="any" mask="" href="./img/logo.gif">
+  <link rel="apple-touch-icon" href="./img/logo.gif">
+  
+  <!-- Bootstrap - Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <!-- font-awesome -->
+  <link rel='stylesheet prefetch' href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  
+  <!-- bespoke css -->
+  <link rel="stylesheet" href="css/style.css">
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="nav-container container">
+      <a href="#" class="navbar-left"><img src="img/logo.gif" style="max-width:35px; margin-top: +7px;"></a>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">DIT - Dublin Institute of Technology</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="main text-justify" id="ditmain">
+      
+          <div id="ditstudyinfo" class="ditdiv lead">
+
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-10 col-md-offset-1 text-align">
+                                <h1 class="text-center">Consent Form</h1>
+                                <h6 class="text-center"><i>ASSESSING MENTAL WORKLOAD IN WEBPAGES AND HUMAN-COMPUTER INTERACTIVE SETTINGS</i></h6>  
+                          </div>   
+                      </div>
+                      
+                     <div class="row well col-sm-offset-1 col-sm-10 col-md-10 col-md-offset-1">
+                             <p><strong>Contact Details:</strong></p>
+                             <p>Filipe Romero (d14124201@mydit.ie)</p>
+                             <p>School of Computing, Dublin Institute of Technology</p>
+                     </div>
+
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-10 col-md-offset-1 text-align">
+                            <p>I consent to participate in this study. I have been informed that the confidentiality of the data I provide will be safeguarded. The electronic data that will be formed of the responses given will be permanently archived by the student/researcher and any sensitive data will be anonymised to prevent my identification.</p>
+
+                            <p>I understand that my behavior will be gathered or monitored during the experiment and the generated data will be stored for statistical analysis in a password-protected database. This database is exclusively accessible by the student/researcher and it is placed within a password-protected server. Regarding the web task(s) I will be asked to perform (‘web-based activity’), I understand that my behavior will be monitored by means of a piece of software for experimental purposes. This piece of software is aimed at gathering my activity such as clicking, scrolling, mouse movements generated during my interaction with a web-page.The aim of the study is to assess my mental workload imposed by a web-based interactive task.</p>
+
+                            <p>I am free to ask any questions at any time before and after the study. I have not been coerced in any way to participate in this study and I nderstand that I may terminate my participation in the study at any point should I so wish. I am at least 18 years old.</p>
+
+                            <p><strong>Data Protection</strong></p>
+                            <ul>
+                                <li>I understand that my participation is entirely voluntary, that I may refuse to answer any question and may withdraw at any time without prejudice.</li>
+                                <li>I agree to Master student Filipe Romero and Dublin Institute of Technology to the storing of any data that results from this project. I agree to the processing of such data for purposes connected with this research as outlined to me.</li>
+                                <li>I understand that my participation is fully anonymous, no personal sensitive details will be recorded, no images or video will be stored and all information collected will remain confidential.</li>
+                                <li>I have been provided with a study information description that outlines the activities I will take part in, how data will be collected and stored and how I can contact the student/researcher.</li>
+                                <li>I agree that my data is used for scientific purposes and I have no objection that it is reported in a Master Thesis Report in a way that does not reveal my identity.</li>
+                                <li>I have read this consent form. I have had the opportunity to ask questions and all my questions have been answered to my satisfaction.</li>
+                                <li>I have understood the description of the research that is being provided to me.</li>
+
+                            </ul>
+
+                          </div>
+                          
+                      </div>
+
+                      <div class="row"> 
+                          <div class="col-sm-offset-1 col-sm-10 col-md-10 col-md-offset-1 text-align">
+                                <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditconsent" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing...">Home</button>
+                          </div>
+                      </div>
+          </div>
+          
+      
+    </div> <!--main end-->
+  </div> <!--container end-->
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Bootstrap - latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Bootstrap - Validator Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+  
+  <script>
+        $(document).ready(function() {
+            $('#ditconsent').on("click", function() {
+                $('#ditconsent').button('loading');
+                window.location.href = "index.html";
+                //window.location.replace("http://filipe.lucalongo.eu/");
+            });
+            //$('#ditformend').submit(function(e){ditFinish(e);});
+        });
+  </script>
+
+  
+</body>
+</html>

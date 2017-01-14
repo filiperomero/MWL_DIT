@@ -59,11 +59,12 @@
                       
                       <!--welcome message row start-->
                       <div class="row"> 
-                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 text-align">
+                          <div class="col-sm-offset-1 col-sm-10 col-md-10 col-md-offset-1 text-align">
                           
                             <p>Thank you in advance for your time spent participating in this online experiment for my Computing Master's Thesis. I would like that you complete at least one of the tasks below, but I would be forever grateful if you could complete both.</p>
                             <p>Before starting a task please be sure that you read the general instructions below:</p>
                             <ul>
+                              <li>Please read the <a href="studyinformation.html">Study information description</a> and the <a href="consent.html">Consent form</a></li>
                               <li>Please do not use a tablet or a smartphone. These tasks are intended to be completed using a desktop or a laptop</li>
                               <li>Please make sure that your browser's window is maximized</li>
                               <li>Please don't open new tabs, web sites, or apps during the experiment</li>
@@ -79,10 +80,12 @@
 
                       <!-- buttons start-->
                       <div class="row"> 
-
                           <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
-                            <button id="ditbtntask1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg">Start Task 1</button>
-                            <button id="ditbtntask2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg">Start Task 2</button>    
+                            <button id="ditbtntask1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg" disabled="true">Start Task 1</button>
+                            <button id="ditbtntask2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary btn-lg" disabled="true">Start Task 2</button>    
+                          </div>
+                          <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2 lead text-center">
+                            <input type="checkbox" onchange="document.getElementById('ditbtntask1').disabled = !this.checked; document.getElementById('ditbtntask2').disabled = !this.checked;"> <i><small>I have read the <a href="studyinformation.html">Study information</a> and the <a href="consent.html">Consent form</a> and I agree to participate in the study</small></i>
                           </div>
                   
                       </div>
