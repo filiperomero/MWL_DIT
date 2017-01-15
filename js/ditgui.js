@@ -553,8 +553,34 @@ function ditShowTask1Int2() {
                     d3.select(this).style({'stroke':'black'});
                     tooltip.classed("hidden", true);
                  });
-          };
-          
+            };
+            
+            // added to move martini - BEGIN
+            d3.selectAll("#ditTask1Int2FieldGroup").classed("hidden", false);
+        
+            var options = d3.select("#ditTask1Int2Field")
+                .append("select")
+                .attr("id", "ditOptions")
+                .attr("class", "form-control")
+                .selectAll("option")
+                .data(years)
+                .enter()
+                .append("option")
+                .text(function(d) {return d;})
+                .attr("value", function(d) {return d;});
+            
+            d3.select('#ditOptions')
+                .on("change", function(d) {
+                    key = this[this.selectedIndex].value;
+                    update(key);
+            });
+            
+            update("1967");
+            
+            // added to move martini - END
+            
+            
+            /* Commented to remove martini
             var year_idx = 0;
 
             var year_interval = setInterval(function() {
@@ -588,6 +614,7 @@ function ditShowTask1Int2() {
                     });
                 }
             }, 1500);
+            */
 
       };
       
