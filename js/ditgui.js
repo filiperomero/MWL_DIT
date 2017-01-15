@@ -995,9 +995,11 @@ function ditSubmitPostSurvey(e, formID) {
     var formData = $(formID).serializeArray();
    
     // check if all data was filled
-    if ((dit.task == 1 && formData.length === 1 && formData[0].value !== "") || (dit.task == 2 && formData.length === 2)) {
-        // all data was filled, send to server
+    //if ((dit.task == 1 && formData.length === 1 && formData[0].value !== "") || (dit.task == 2 && formData.length === 2)) {
+if ((dit.task == 1 && formData.length === 2) || (dit.task == 2 && formData.length === 2)) {    
+    // all data was filled, send to server
         var data = $(formID).serialize();
+        
         var postResponse;
         postResponse = dit.persist.sendTaskSurvey(dit.task, data);
         postResponse.done(function(data) {
