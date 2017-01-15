@@ -395,6 +395,7 @@
                               <p>You are going to have access to a dataset displaying the population growth, for the past decades, of most territories in the euro zone (source: World DataBank). </p>
                               <p>At the top of the page you will be provided with a dropdown list (<img src="img/ditselectyear.png" alt="Select Year" align="middle" style="width:200px">) which will allow you to choose the year you want to explore. After selecting a year a bar chart will be displayed, where each bar represents a single territory. The territories will be ordered from the territory with the largest Population Growth % Increase to the territory with the largest Population Growth % Decrease.</p>
                               <p>If you place your mouse pointer over a territory’s bar you will be able to see more information regarding population statistics for the territory and for the previously selected year. The following image shows extra info for Ireland that can be visualized by “mousing hover” Ireland’s bar:</p>
+                              <img src="img/ditt1i1.png" alt="Mouse Over Extra Infor" style="border:1px solid black"> 
                               <p>In order to complete this task you will have to accomplish the 2 following goals using the data provided (don’t worry! You’ll have access to the goals’ description while exploring the data set):</p>
                               <ul>
                                    <li>Please find out if the following sentence is true or false according with the data you are going to access: “Statistics show that, every time a decade ends, (e.g. 1969 to 1970; 1979 to 1980) Ireland’s <i>Death rate, crude (per 1,000 people)</i> decreases, whereas <i>Life expectancy at birth, total (years)</i> increases.”</li>
@@ -565,7 +566,7 @@
                          </fieldset>
                          <button id="ditbtnendtask1i2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="button" class="btn btn-primary pull-right">Finish Task</button>
                      </form>
-                     <h3 id="ditTask1Int2Title">Population growth (annual %)</h2>
+                     <h3 id="ditTask1Int2Title">Population growth (annual %)</h3>
           
           </div> <!-- ditTask1Int2 end-->
           
@@ -657,14 +658,16 @@
           </div> <!-- ditTask2Int2 end-->
           
           <div id="dittask1survey" class="ditdiv lead hidden">
+            <h2>Please answer the following questions regarding the task you have just performed</h2>
+            <br>
             <!--survey row start-->
-                      <div class="row"> 
+            <div class="row"> 
                 <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
                     <form id="ditformsrvtask1" data-toggle="validator" role="form">
                             <fieldset class="form-group row">
                                 <legend><h3>Goal 1</h3>Please find out if the following sentence is true or false according with the data you are going to access: “Statistics show that, every time a decade ends, (e.g. 1969 to 1970; 1979 to 1980) Ireland’s <i>Death rate, crude (per 1,000 people)</i> decreases, whereas <i>Life expectancy at birth, total (years)</i> increases.”
                                 </legend>
-                                <div class="form-check" id="ditTask2Question1">
+                                <div class="form-check" id="ditTask1Question1">
                                     <label class="form-check-label dit-radio control-label">
                                         <input class="form-check-input" type="radio" name="Question1" id="Q1O1" value="opt1" required> True
                                     </label>
@@ -680,7 +683,7 @@
                             <fieldset class="form-group row">
                                 <legend><h3>Goal 2</h3>Statistics show that, every time a decade ends, (e.g. 1969 to 1970; 1979 to 1980) Ireland’s <i>Death rate, crude (per 1,000 people)</i> decreases, whereas <i> Population growth (annual %)</i> increases. According with the data you are going to access, which years contradict this theory?
                                 </legend>
-                                <div class="form-check" id="ditTask2Question2">
+                                <div class="form-check" id="ditTask1Question2">
                                     <label class="form-check-label dit-radio control-label">
                                         <input class="form-check-input" type="radio" name="Question2" id="Q2O1" value="opt1" required> 1980 and 2010
                                     </label>
@@ -700,7 +703,6 @@
                                 </div>
                             </fieldset>
                             <button id="ditbtnsrvtask1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
-                      </div>
                     </form>
                 </div>
             </div>
@@ -712,7 +714,7 @@
             <h2>Please answer the following questions regarding the task you have just performed</h2>
             <br>
             <!--survey row start-->
-                      <div class="row"> 
+            <div class="row"> 
                 <div class="col-sm-offset-1 col-sm-10 col-md-8 col-md-offset-2">
                     <form id="ditformsrvtask2" data-toggle="validator" role="form">
                         <fieldset class="form-group row">
@@ -757,7 +759,7 @@
                                     <input class="form-check-input" type="radio" name="Question2" id="Q2O5" value="opt5" required> I wasn't able to find the answer
                                 </label>
                                 <div class="help-block with-errors"></div>
-                      </div>
+                            </div>
                         </fieldset>
                         <button id="ditbtnsrvtask2" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing..." type="submit" class="btn btn-primary btn-lg pull-right">Next</button>
                     </form>
