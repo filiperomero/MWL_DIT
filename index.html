@@ -727,89 +727,229 @@
                             <form data-toggle="validator" role="form" id="ditformselfmwl">
                             
                                 <fieldset class="form-group row">
-                                        <legend><strong>1. Mental Demand</strong> - How much mental and perceptual activity was required (e.g., thinking, deciding, calculating, remembering, looking, searching, etc.)? Was the task easy or demanding, simple or complex, exacting or forgiving?</legend>
+                                        <legend><strong>Mental Workload</strong> - How much mental workload the task imposed on you?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-mental" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-mental" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-mental" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-mental" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-mental" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-mwl" value="0" required><label>Extreme Underload</label></li>
+                                              <li><input type="radio" name="dit-mwl-mwl" value="25" required><label>Underload</label></li>
+                                              <li><input type="radio" name="dit-mwl-mwl" value="50" required><label>Optimal Load</label></li>
+                                              <li><input type="radio" name="dit-mwl-mwl" value="75" required><label>Overload</label></li>
+                                              <li><input type="radio" name="dit-mwl-mwl" value="100" required><label>Extreme Overload</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Mental Demand</strong> - How much mental and perceptual activity was required by the task you have just executed? In other words, was the task easy or demanding, simple or complex?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-mental" value="0" required><label>Very Simple</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="25" required><label>Simple</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="50" required><label>Moderate</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="75" required><label>Complex</label></li>
+                                              <li><input type="radio" name="dit-mwl-mental" value="100" required><label>Very Complex</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
-                                        <legend><strong>2. Physical Demand</strong> - How much physical activity was required (e.g., pushing, pulling, turning, controlling, activating, etc.)? Was the task easy or demanding, slow or brisk, slack or strenuous, restful or laborious?</legend>
+                                        <legend><strong>Physical Demand</strong> - How much physical activity was required by the task? In other words, was the task physically easy or demanding, slack or strenuous?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-physical" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-physical" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-physical" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-physical" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-physical" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="0" required><label>Very Easy</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="25" required><label>Easy</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="50" required><label>Moderate</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="75" required><label>Strenuous</label></li>
+                                              <li><input type="radio" name="dit-mwl-physical" value="100" required><label>Extremely Strenuous</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
-                                        <legend><strong>3. Temporal Demand </strong> - How much time pressure did you feel due to the rate or pace at which the tasks or task elements occurred? Was the pace slow and leisurely or rapid and frantic?</legend>
+                                        <legend><strong>Temporal Demand </strong> - How much time pressure did you feel due to the rate or pace at which the tasks or task elements occurred? Was the pace slow or rapid?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-temporal" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-temporal" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-temporal" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-temporal" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-temporal" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="0" required><label>Very Slow</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="25" required><label>Slow</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="50" required><label>Moderate</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="75" required><label>Rapid</label></li>
+                                              <li><input type="radio" name="dit-mwl-temporal" value="100" required><label>Very Rapid</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
-                                        <legend><strong>4. Performance </strong> - How successful do you think you were in accomplishing the goals of the task? How satisfied were you with your performance in accomplishing these goals?</legend>
+                                        <legend><strong>Performance </strong> - How successful were you in the task? In other words, how satisfied were you with your level of performance?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-performance" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-performance" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-performance" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-performance" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-performance" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="0" required><label>Not at all</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="25" required><label>Slightly</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="50" required><label>Moderately</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="75" required><label>Considerably</label></li>
+                                              <li><input type="radio" name="dit-mwl-performance" value="100" required><label>Extremely</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
-                                        <legend><strong>5. Effort </strong> - How hard did you have to work (mentally and physically) to accomplish your level of performance?</legend>
+                                        <legend><strong>Effort </strong> - How hard did you have to work (mentally and physically) to accomplish your level of performance?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-effort" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-effort" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-effort" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-effort" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-effort" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="0" required><label>Very Low</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="25" required><label>Slightly</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="50" required><label>Moderately</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="75" required><label>Considerably</label></li>
+                                              <li><input type="radio" name="dit-mwl-effort" value="100" required><label>Extremely</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
                                 
                                 <fieldset class="form-group row">
-                                        <legend><strong>6. Frustration </strong> - How insecure, discouraged, irritated, stressed and annoyed versus secure, gratified, content, relaxed and complacent did you feel during the task?</legend>
+                                        <legend><strong>Frustration </strong> - How irritated, stressed and annoyed versus content, relaxed, and complacent did you feel during the task?</legend>
                                         <div class="form-check">
                                             <ul class='dit-likert'>
-                                              <li><input type="radio" name="dit-mwl-frustration" value="very_low" required><label>Very Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-frustration" value="low" required><label>Low</label></li>
-                                              <li><input type="radio" name="dit-mwl-frustration" value="neutral" required><label>Neutral</label></li>
-                                              <li><input type="radio" name="dit-mwl-frustration" value="high" required><label>High</label></li>
-                                              <li><input type="radio" name="dit-mwl-frustration" value="very_high" required><label>Very High</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="0" required><label>Very Relaxed</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="25" required><label>Relaxed</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="50" required><label>Normal</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="75" required><label>Annoyed</label></li>
+                                              <li><input type="radio" name="dit-mwl-frustration" value="100" required><label>Very Frustrated</label></li>
                                             </ul>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                 </fieldset>
-                                
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Parallelism </strong> - Did you perform just this task or were you engaged in other parallel tasks (mobile browsing/social networks, chatting, reading, conversations etc.)?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-parallelism" value="0" required><label>Only this task</label></li>
+                                              <li><input type="radio" name="dit-mwl-parallelism" value="25" required><label>Some other task</label></li>
+                                              <li><input type="radio" name="dit-mwl-parallelism" value="50" required><label>Various tasks</label></li>
+                                              <li><input type="radio" name="dit-mwl-parallelism" value="75" required><label>Several tasks</label></li>
+                                              <li><input type="radio" name="dit-mwl-parallelism" value="100" required><label>Too many tasks</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Manual activity </strong> - How much attention was required for manually responding to the elements/activities of the task (writing, drawing, clicking, etc)?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-manualact" value="0" required><label>No attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-manualact" value="25" required><label>Some attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-manualact" value="50" required><label>Moderate attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-manualact" value="75" required><label>Considerable attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-manualact" value="100" required><label>Total attention</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Visual attention </strong> - How much attention was required for executing the task based on the information visually received?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-visualact" value="0" required><label>No attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-visualact" value="25" required><label>Some attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-visualact" value="50" required><label>Moderate attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-visualact" value="75" required><label>Considerable attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-visualact" value="100" required><label>Total attention</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Solving and deciding </strong> - How much attention was required by the task for activities like remembering, problem-solving, decision-making and perceiving (eg. detecting, recognising and identifying objects)?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-solvedec" value="0" required><label>No attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-solvedec" value="25" required><label>Some attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-solvedec" value="50" required><label>Moderate attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-solvedec" value="75" required><label>Considerable attention</label></li>
+                                              <li><input type="radio" name="dit-mwl-solvedec" value="100" required><label>Total attention</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Context bias </strong> - How often interruptions during the task occurred? In other words, were distractions (mobile, interruptions, noise, questions, other participants, etc.) not influential or did they negatively influence your attention towards the task?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-context" value="0" required><label>Not influential</label></li>
+                                              <li><input type="radio" name="dit-mwl-context" value="25" required><label>Some influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-context" value="50" required><label>Moderate influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-context" value="75" required><label>Considerable influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-context" value="100" required><label>Extremely influence</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Motivation </strong> - Were you motivated by the task?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-motivation" value="0" required><label>Not at all</label></li>
+                                              <li><input type="radio" name="dit-mwl-motivation" value="25" required><label>Slightly</label></li>
+                                              <li><input type="radio" name="dit-mwl-motivation" value="50" required><label>Moderately</label></li>
+                                              <li><input type="radio" name="dit-mwl-motivation" value="75" required><label>Considerably</label></li>
+                                              <li><input type="radio" name="dit-mwl-motivation" value="100" required><label>Extremely</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Skill  </strong> - Did your skills have no influence or did they help executing the task?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-skill" value="0" required><label>Not influential</label></li>
+                                              <li><input type="radio" name="dit-mwl-skill" value="25" required><label>Some influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-skill" value="50" required><label>Moderate influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-skill" value="75" required><label>Considerable influence</label></li>
+                                              <li><input type="radio" name="dit-mwl-skill" value="100" required><label>Extremely influence</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Past knowledge/expertise </strong> - How much experience/knowledge did you have with the content of the task?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-knowledge" value="0" required><label>No knowledge</label></li>
+                                              <li><input type="radio" name="dit-mwl-knowledge" value="25" required><label>Some knowledge</label></li>
+                                              <li><input type="radio" name="dit-mwl-knowledge" value="50" required><label>Moderate knowledge</label></li>
+                                              <li><input type="radio" name="dit-mwl-knowledge" value="75" required><label>Considerable knowledge</label></li>
+                                              <li><input type="radio" name="dit-mwl-knowledge" value="100" required><label>Full knowledge</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
+                                <fieldset class="form-group row">
+                                        <legend><strong>Alertness </strong> - Were you alerted during the task? In other words, were you sleepy/tired or fully activated/awake?</legend>
+                                        <div class="form-check">
+                                            <ul class='dit-likert'>
+                                              <li><input type="radio" name="dit-mwl-alertness" value="0" required><label>Extremely sleepy</label></li>
+                                              <li><input type="radio" name="dit-mwl-alertness" value="25" required><label>sleepy</label></li>
+                                              <li><input type="radio" name="dit-mwl-alertness" value="50" required><label>Normally awake</label></li>
+                                              <li><input type="radio" name="dit-mwl-alertness" value="75" required><label>Activated</label></li>
+                                              <li><input type="radio" name="dit-mwl-alertness" value="100" required><label>Fully activated</label></li>
+                                            </ul>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                </fieldset>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-lg pull-right" id="ditbtnselfmwl" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing...">Next</button>
                                 </div>
