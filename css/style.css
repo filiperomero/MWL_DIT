@@ -15,6 +15,7 @@ form .dit-statment {
   padding: 30px 0 0 4.25%;
   margin-bottom:10px;
 }
+
 form .dit-likert {
   list-style:none;
   width:100%;
@@ -23,32 +24,93 @@ form .dit-likert {
   display:block;
   border-bottom:2px solid #efefef;
 }
+
 form .dit-likert:last-of-type {border-bottom:0;}
+
+/* line */
 form .dit-likert:before {
   content: '';
   position:relative;
   top:11px;
-  left:9.5%;
+  left:0%/*9.5%*/;
   display:block;
   background-color:#efefef;
   height:4px;
-  width:78%;
+  width:100%;
 }
+
 form .dit-likert li {
   display:inline-block;
-  width:19%;
+  width:4%; /* distance between li */
   text-align:center;
   vertical-align: top;
 }
+
 form .dit-likert li input[type=radio] {
   display:block;
   position:relative;
   top:0;
-  left:50%;
-  margin-left:-6px;
-  
+  left:80%;
+  /*margin-left:-6px;*/
 }
-form .dit-likert li label {width:100%; font-weight: normal; font-size: 75%;}
+
+form .dit-likert li label {
+    width:100%;
+    font-weight: normal;
+    font-size: 75%;
+}
+
+/* ticks mwl */
+form .dit-likert-zero:before {
+  content: '0';
+  position:relative;
+  top:-180%;
+  width:100%;
+  font-weight: normal;
+  font-size: 75%;
+  text-align:center;
+}
+
+form .dit-likert-twofive:before {
+  content: '25';
+  position:relative;
+  top:-180%;
+  width:100%;
+  font-weight: normal;
+  font-size: 75%;
+  text-align:center;
+}
+
+form .dit-likert-fifty:before {
+  content: '50';
+  position:relative;
+  top:-180%;
+  width:100%;
+  font-weight: normal;
+  font-size: 75%;
+  text-align:center;
+}
+
+form .dit-likert-sevenfive:before {
+  content: '75';
+  position:relative;
+  top:-180%;
+  width:100%;
+  font-weight: normal;
+  font-size: 75%;
+  text-align:center;
+}
+
+form .dit-likert-onehundred:before {
+  content: '100';
+  position:relative;
+  top:-180%;
+  width:100%;
+  font-weight: normal;
+  font-size: 75%;
+  text-align:center;
+}
+
 form .buttons {
   margin:30px 0;
   padding:0 4.25%;

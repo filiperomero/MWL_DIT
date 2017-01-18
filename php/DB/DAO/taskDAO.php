@@ -94,6 +94,21 @@ class taskDAO {
         $sql .= " , task.mwl_performance = ? ";
         $sql .= " , task.mwl_effort = ? ";
         $sql .= " , task.mwl_frustration = ? ";
+        $sql .= " , mwl_mwl = ? ";
+        $sql .= " , mwl_parallelism = ? ";
+        $sql .= " , mwl_manualact = ? ";
+        $sql .= " , mwl_visualact = ? ";
+        $sql .= " , mwl_solvedec = ? ";
+        $sql .= " , mwl_context = ? ";
+        $sql .= " , mwl_motivation = ? ";
+        $sql .= " , mwl_skill = ? ";
+        $sql .= " , mwl_knowledge = ? ";
+        $sql .= " , mwl_alertness = ? ";
+        $sql .= " , mwl_taskspace = ? ";
+        $sql .= " , mwl_verbalmat = ? ";
+        $sql .= " , mwl_auditoryatt = ? ";
+        $sql .= " , mwl_speechresp = ? ";
+        $sql .= " , mwl_responsesel = ? ";
         $sql .= " WHERE task.id = ? ";
         
         $stmt = $this->dbManager->prepareQuery ( $sql );
@@ -103,7 +118,22 @@ class taskDAO {
         $this->dbManager->bindValue ( $stmt, 4, $parametersArray ["mwl_performance"], $this->dbManager->STRING_TYPE );
         $this->dbManager->bindValue ( $stmt, 5, $parametersArray ["mwl_effort"], $this->dbManager->STRING_TYPE );
         $this->dbManager->bindValue ( $stmt, 6, $parametersArray ["mwl_frustration"], $this->dbManager->STRING_TYPE );
-        $this->dbManager->bindValue ( $stmt, 7, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->bindValue ( $stmt, 7, $parametersArray ["mwl_mwl"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 8, $parametersArray ["mwl_parallelism"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 9, $parametersArray ["mwl_manualact"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 10, $parametersArray ["mwl_visualact"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 11, $parametersArray ["mwl_solvedec"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 12, $parametersArray ["mwl_context"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 13, $parametersArray ["mwl_motivation"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 14, $parametersArray ["mwl_skill"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 15, $parametersArray ["mwl_knowledge"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 16, $parametersArray ["mwl_alertness"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 17, $parametersArray ["mwl_taskspace"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 18, $parametersArray ["mwl_verbalmat"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 19, $parametersArray ["mwl_auditoryatt"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 20, $parametersArray ["mwl_speechresp"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 21, $parametersArray ["mwl_responsesel"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 22, $id, $this->dbManager->INT_TYPE );
         $this->dbManager->executeQuery ( $stmt );
 
         return "done!!!";
@@ -112,12 +142,14 @@ class taskDAO {
     public function updateTask1Survey($parametersArray, $id) {
         // Update assumes that all the required parameters are defined and set
         $sql = "UPDATE task  ";
-        $sql .= " SET task1_survey = ? ";
+        $sql .= " SET task1_survey_q1 = ? ";
+        $sql .= " , task1_survey_q2 = ? ";
         $sql .= " WHERE id = ? ";
         
         $stmt = $this->dbManager->prepareQuery ( $sql );
-        $this->dbManager->bindValue ( $stmt, 1, $parametersArray ["task1survey"], $this->dbManager->STRING_TYPE );
-        $this->dbManager->bindValue ( $stmt, 2, $id, $this->dbManager->INT_TYPE );
+        $this->dbManager->bindValue ( $stmt, 1, $parametersArray ["task1Q1"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 2, $parametersArray ["task1Q2"], $this->dbManager->STRING_TYPE );
+        $this->dbManager->bindValue ( $stmt, 3, $id, $this->dbManager->INT_TYPE );
         $this->dbManager->executeQuery ( $stmt );
 
         return "done!!!";

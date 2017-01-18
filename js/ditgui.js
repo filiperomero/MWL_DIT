@@ -1028,7 +1028,7 @@ function ditBye(e) {
     var formData = $('#ditformselfmwl').serializeArray();
     
     // check if all data was filled
-    if (formData.length === 16) {
+    if (formData.length === 21) {
         // all data was filled, send to server
         var data = $("#ditformselfmwl").serialize();
 
