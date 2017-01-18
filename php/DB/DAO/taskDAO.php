@@ -152,6 +152,7 @@ class taskDAO {
         $this->dbManager->bindValue ( $stmt, 3, $id, $this->dbManager->INT_TYPE );
         $this->dbManager->executeQuery ( $stmt );
 
+        //return "done!!! " . $parametersArray ["task1Q1"] . "/" . $parametersArray["task1Q2"];
         return "done!!!";
     }
     

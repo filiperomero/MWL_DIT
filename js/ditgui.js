@@ -993,7 +993,7 @@ function ditSubmitPostSurvey(e, formID) {
     $('#ditbtnsrvtask2').button('loading');
 
     var formData = $(formID).serializeArray();
-   
+    
     // check if all data was filled
     //if ((dit.task == 1 && formData.length === 1 && formData[0].value !== "") || (dit.task == 2 && formData.length === 2)) {
 if ((dit.task == 1 && formData.length === 2) || (dit.task == 2 && formData.length === 2)) {    
@@ -1037,7 +1037,6 @@ function ditBye(e) {
             console.log("postResponse.done dit.persist.selfMWL");
             console.log(data);
             ditShowDiv("#ditthanksbye");
-            
         });        
     } else {
        console.log("ditformselfmwl not filled");

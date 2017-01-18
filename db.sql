@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `mwl_performance` varchar(4) DEFAULT NULL,
   `mwl_effort` varchar(4) DEFAULT NULL,
   `mwl_frustration` varchar(4) DEFAULT NULL,
-  `mwl-mwl` varchar(4) DEFAULT NULL,
+  `mwl_mwl` varchar(4) DEFAULT NULL,
   `mwl_parallelism` varchar(4) DEFAULT NULL,
   `mwl_manualact` varchar(4) DEFAULT NULL,
   `mwl_visualact` varchar(4) DEFAULT NULL,

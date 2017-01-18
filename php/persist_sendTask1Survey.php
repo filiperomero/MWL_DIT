@@ -22,8 +22,11 @@ if(strlen( $paramArr["task1survey"] ) > 4000) {
 */
 
 $paramArr["task1Q1"] = htmlspecialchars($_POST['Question1']);
-$paramArr["taskqQ2"] = htmlspecialchars($_POST['Question2']);
+$paramArr["task1Q2"] = htmlspecialchars($_POST['Question2']);
 
 $results = $taskDAO->updateTask1Survey($paramArr, $_SESSION['id']);
+
+//print $paramArr["task1Q1"] . "/" . $paramArr["task1Q2"];
+//print $results;
 
 ?>
