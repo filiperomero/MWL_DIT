@@ -71,7 +71,7 @@ var ditDivDids = [];
 var dit_id;
 d3.selectAll(".ditdiv").each(function(){
     dit_id = d3.select(this).attr("id");
-    if(dit_id != null && dit_id !='undefined' && dit_id.includes("dit")) ditDivDids.push("#" + dit_id);
+    if(dit_id != null && dit_id !='undefined' && dit_id.indexOf("dit") > -1) ditDivDids.push("#" + dit_id);
 });
 
 function ditShowDiv(ditDiv) {
@@ -218,7 +218,8 @@ function ditShowTask1Int1() {
 
         svg.on("mousemove", function() {
             // update tooltip position
-            tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            //tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");
+            tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
             return true;
           });
 
@@ -454,7 +455,8 @@ function ditShowTask1Int2() {
             
         svg.on("mousemove", function() {
             // update tooltip position
-            tooltip.style("top", (event.pageY-200)+"px").style("left",(event.pageX+10)+"px");
+            //tooltip.style("top", (event.pageY-200)+"px").style("left",(event.pageX+10)+"px");
+            tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
             return true;
           });
 
