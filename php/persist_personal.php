@@ -20,6 +20,11 @@ $paramArr["expertise"]    = htmlspecialchars($_POST['expertise']);
 $paramArr["education"]    = htmlspecialchars($_POST['education']);
 $paramArr["tasktype"]     = htmlspecialchars($_POST['tasktype']);
 
+$paramArr["pre_frustration"] = htmlspecialchars($_POST['dit-pre-frustration']);
+$paramArr["pre_motivation"]  = htmlspecialchars($_POST['dit-pre-motivation']);
+$paramArr["pre_arousal"]     = htmlspecialchars($_POST['dit-pre-arousal']);
+$paramArr["pre_emostate"]    = htmlspecialchars($_POST['dit-pre-emostate']);
+
 $results = $taskDAO->insert( $paramArr );
 
 $_SESSION['id'] = $results[0];

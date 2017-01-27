@@ -960,7 +960,7 @@ function ditInitTask(e) {
     var formData = $('#ditformprequest').serializeArray();
 
     // check if all data was filled
-    if (formData.length === 5 && formData[2].value !== "") {
+    if (formData.length === 9 && formData[2].value !== "") {
         // all data was filled, send to server
         var data = $("#ditformprequest").serialize();
         data += "&tasktype=" + dit.task;

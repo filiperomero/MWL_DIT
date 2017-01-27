@@ -93,3 +93,10 @@ CREATE TABLE IF NOT EXISTS `task` (
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+ALTER TABLE task
+ADD `pre_emostate`    varchar(4) DEFAULT NULL AFTER education,
+ADD `pre_arousal`     varchar(4) DEFAULT NULL AFTER education,
+ADD `pre_motivation`  varchar(4) DEFAULT NULL AFTER education,
+ADD `pre_frustration` varchar(4) DEFAULT NULL AFTER education
+;
