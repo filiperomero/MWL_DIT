@@ -67,9 +67,13 @@ form .dit-likert-line:before {
   left:50%;
   top:90%;
   /*z-index=-1; put behind*/
-  width: 10%; /* Line width */
+  width: 1px; /* Line width */
   background-color: black; /* Line color */
-  height: 400%; /* Override in-line if you want specific height. */
+  height: 40px; /* Override in-line if you want specific height. */
+  /* if class in input type=radio
+   width: 10%;
+   height: 400%;
+  */
   display:inline-block;
   /*float: left;  Causes the line to float to left of content. 
   You can instead use position:absolute or display:inline-block
