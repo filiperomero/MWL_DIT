@@ -456,7 +456,7 @@ function ditShowTask1Int2() {
         svg.on("mousemove", function() {
             // update tooltip position
             //tooltip.style("top", (event.pageY-200)+"px").style("left",(event.pageX+10)+"px");
-            tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+            tooltip.style("top", (d3.event.pageY-200)+"px").style("left",(d3.event.pageX+10)+"px");
             return true;
           });
 
