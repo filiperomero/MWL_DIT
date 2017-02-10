@@ -292,7 +292,7 @@ dit.tracker = (function() {
              timeStamp:   totalTime(), 
              x:           event.clientX, 
              y:           event.clientY, 
-             vizElement:  event.srcElement.outerHTML.substr(0,100)
+             vizElement:  (event.srcElement||event.target).outerHTML.substr(0,100)
          };
          mouseClicks.push(e);
          if (dit.isDebugging()) {console.log("Mouse click! X="+e.x+" Y="+e.y);}
